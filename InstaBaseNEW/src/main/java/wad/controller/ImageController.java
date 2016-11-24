@@ -19,6 +19,6 @@ public class ImageController {
     @RequestMapping("*")
     @ResponseBody
     public String handleDefault() {
-        return "NETBEANS COMMIT FTW";
+        return "RAKASTAN RAJUA RONJAA";
     }
 }
