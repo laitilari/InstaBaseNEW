@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">>
+    <head>
+        <title>user page</title>
+        <meta charset="UTF-8"/>
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    </head>
+    <body>
+        <a href="/ownpage">Own page</a>
+        <a href="/homepage">Home</a>
+        <a href="">follow_unfollow </a><br/>
+        Followers: <span th:text="">followers</span>  <br/>
+                
+
+        
+        <ol>
+            <li th:each="kuva : kuvat">
+                <img th:src=""/>
+                
+               
+            </li>
+        </ol>
+        
+        
+    </body>
+</html>

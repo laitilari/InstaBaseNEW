@@ -1,0 +1,7 @@
+wad\domain\Image.class
+wad\controller\ImageController.class
+wad\repository\AccountRepository.class
+wad\domain\Comment.class
+wad\domain\Account.class
+wad\repository\CommentRepository.class
+wad\InstaBaseNEWApplication.class

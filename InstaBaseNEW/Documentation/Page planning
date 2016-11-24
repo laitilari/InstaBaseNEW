@@ -1,0 +1,41 @@
+Login page:
+-login
+-sign up
+-search for a user
+-(liked/newest images?)
+
+Own page:
+-name
+-own images
+-delete image
+-delete account
+-logout
+-following (links)
+-followers (names/amount)
+-link to most liked/newest images
+
+User page:
+-name
+-amount of followers
+-images
+-follow/unfollow
+-link to own page
+-link to most liked/newest images
+
+Image page:
+-image
+-link to user
+-comments
+-likes
+-add a comment (delete a comment?)
+-add a like (delete a like?)
+-link to own page
+-link to most liked/newest images
+
+Most liked/newest images:
+-images
+-link to own page
+
+
+
+
