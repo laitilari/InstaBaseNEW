@@ -7,37 +7,37 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">>
     <head>
         <title>Image page</title>
-        <meta charset="UTF-8"/>
-<!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <!--<meta charset="UTF-8"/>-->
+        <!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     </head>
     <body>
         <a href="/ownpage">Own page</a>
         <a href="/userpage">User page</a><br/>
-        
-        <img th:src=""/>
-        
-        <form th:action="" th:method="POST">
-                    <input type="submit" value="Like"/>
-                </form>
-        (<span th:text="">nn</span> likes) <br/>
-        
+
+        <img th:src="${linkToImage}"/>
+
+        <form th:action="/imagePage/{imageid}/like" th:method="POST">
+            <input type="submit" value="Like"/>
+        </form>
+        <span th:text="${numberOfLikes}"> </span> likes <br/>
+
         <div>
             Write a comment:<br/>
-            <form action="" method="POST">
+            <form action="/imagePage/{imageid}/comment" method="POST">
                 <input type="text" name="comment" id=""/><br/>
                 <input type="submit" value="Send"/>           
             </form>
         </div>
-        
+
         <ol>
-            <li th:each="movie : ${movies}">
-                
+            <li th:each="comment : ${comments}">
+
                 <span th:text="Kommentti">name</span> <span th:text="Kommentoijan nimi"></span> <br/>
-                 
-               
+
+
             </li>
         </ol>
-        
-        
+
+
     </body>
 </html>

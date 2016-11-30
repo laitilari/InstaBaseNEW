@@ -22,6 +22,7 @@ public class Comment extends AbstractPersistable<Long> {
     private Date commentDate;
     @Column
     private String content;
+    
 
     public Account getAccount() {
         return account;
