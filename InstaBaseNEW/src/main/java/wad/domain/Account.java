@@ -4,6 +4,7 @@ package wad.domain;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -13,13 +14,38 @@ public class Account extends AbstractPersistable<Long> {
 
     @OneToMany
     private List<Comment> comments;
-    @Column
+    
+//    @Id
     private String username;
     @Column
     private String password;
+    @OneToMany
+    private List<Image> images;
+    
+////    @OneToMany
+////    private List<Account> followers;
+//
+//    public List<Account> getFollowers() {
+//        return followers;
+//    }
+//
+//    public void setFollowers(List<Account> followers) {
+//        this.followers = followers;
+//    }
     
     private boolean admin;
     private boolean user;
+    
+    
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+    
     
     public Comment findCommentByContent(String content) {
         for (Comment c : comments) {
