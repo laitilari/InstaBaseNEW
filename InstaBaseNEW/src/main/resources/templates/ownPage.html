@@ -8,41 +8,49 @@ and open the template in the editor.
     <head>
         <title>Own page</title>
         <!--<meta charset="UTF-8"/>-->
-<!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     </head>
     <body>
         <a href="/logout">Logout</a>
         <a href="/homepage">Home</a>
         <a href="">Delete account</a><br/>
-        Followers: <span th:text="">followers</span>  <br/>
-        <img th:src=""/>
-        
-        <form th:action="" th:method="POST">
+        Followers: <span th:text="${followersSize}">followers</span> <br/>
+
+        <form method="POST" action="/profile/addimage" enctype="multipart/form-data">
+            <input type="file" name="file" id="file"/>
+            <input type="submit" value="Add image"/>
+        </form>
+
+
+
+        <!--<img th:src=""/>-->
+
+        <form th:action="dd" th:method="POST">
             <input type="submit" value="Like"/>
         </form>
-        (<span th:text="">nn</span> likes) <br/>
-        
+        (<span th:text="${likesSize}">nn</span> likes) <br/>
+
         <ol>
             <li th:each="seuraaja : ${seurattavat}">
-                
+
                 <a th:href="seuraajalinkki" th:text="seuraajannimi">actor name</a>
-                 
-               
+
+
             </li>
         </ol>
-        
+
         <ol>
             <li th:each="kuva : kuvat">
-                <img th:src=""/>
-                <form th:action="" th:method="DELETE">
+                <!--<img th:src="kuva."/>-->
+                <form th:action="@{/profile/{id}(id=${kuva.id})}" th:method="DELETE">
                     <input type="submit" value="Remove"/>
                 </form><br/>
-                
-                 
-               
+
+
+
             </li>
         </ol>
-        
-       
+
+
     </body>
 </html>

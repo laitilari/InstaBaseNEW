@@ -2,11 +2,13 @@ package wad.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -15,22 +17,21 @@ public class Image extends AbstractPersistable<Long> {
     @ManyToOne
     private Account account;
 
-    @Column
-    private String link;
-
     @OneToMany
     private List<Account> likes;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] content;
 
     @OneToMany
     private List<Comment> comments;
 
-    public String getLink() {
-        return link;
+    public Image() {
+        this.likes = new ArrayList<>();
+        
     }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
 
     public Account getAccount() {
         return account;
@@ -60,6 +61,14 @@ public class Image extends AbstractPersistable<Long> {
 
     public void setLikes(ArrayList<Account> likes) {
         this.likes = likes;
+    }
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
     }
 
     public List<Comment> getComments() {

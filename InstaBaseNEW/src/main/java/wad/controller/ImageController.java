@@ -28,7 +28,7 @@ public class ImageController {
     @RequestMapping(value = "/imagePage/{imageid}", method = RequestMethod.GET)
     public String imagePageDefault(Model model, @PathVariable Long imageid) {
         Image image = imageRepo.getOne(imageid);
-        model.addAttribute("linkToImage", image.getLink());
+        
         model.addAttribute("numberOfLikes", image.getLikes().size());
         model.addAttribute("comments", image.getComments());
         return "imagePage";
