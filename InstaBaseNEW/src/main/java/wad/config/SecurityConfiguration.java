@@ -26,6 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll();
 
         http.formLogin()
+                .loginPage("/login")
                 .permitAll();
     }
 

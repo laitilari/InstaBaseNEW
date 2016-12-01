@@ -16,7 +16,7 @@ and open the template in the editor.
         <a href="">Delete account</a><br/>
         Followers: <span th:text="${followersSize}">followers</span> <br/>
 
-        <form method="POST" action="/profile/addimage" enctype="multipart/form-data">
+        <form method="POST" action="/profile" enctype="multipart/form-data">
             <input type="file" name="file" id="file"/>
             <input type="submit" value="Add image"/>
         </form>
@@ -25,9 +25,9 @@ and open the template in the editor.
 
         <!--<img th:src=""/>-->
 
-        <form th:action="dd" th:method="POST">
+<!--        <form th:action="/profile" th:method="POST">
             <input type="submit" value="Like"/>
-        </form>
+        </form>-->
         (<span th:text="${likesSize}">nn</span> likes) <br/>
 
         <ol>
@@ -42,9 +42,9 @@ and open the template in the editor.
         <ol>
             <li th:each="kuva : kuvat">
                 <!--<img th:src="kuva."/>-->
-                <form th:action="@{/profile/{id}(id=${kuva.id})}" th:method="DELETE">
+<!--                <form th:action="@{/profile/{id}(id=${kuva.id})}" th:method="DELETE">
                     <input type="submit" value="Remove"/>
-                </form><br/>
+                </form><br/>-->
 
 
 

@@ -29,6 +29,8 @@ public class Image extends AbstractPersistable<Long> {
 
     public Image() {
         this.likes = new ArrayList<>();
+        this.comments = new ArrayList<>();
+       
         
     }
 
