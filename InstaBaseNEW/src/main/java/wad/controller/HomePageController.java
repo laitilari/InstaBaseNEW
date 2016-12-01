@@ -19,27 +19,4 @@ public class HomePageController {
 
         return "homePage";
     }
-<<<<<<< HEAD
-
-=======
-    
-    @RequestMapping(value = "/createuser", method = RequestMethod.POST)
-    public String createNewUser(@RequestParam String username, @RequestParam String password){
-        if(accountRepo.findByUsername(username) != null){
-            return "homePage";
-        }
-        Account account = new Account();
-        account.setUsername(username);
-        account.setPassword(password);
-        accountRepo.save(account);
-        
-        return "redirect:/";
-    }
-    
-   
-    
-    
-    
-    
->>>>>>> 878149c9e9b1f18d93fd194096140d299fa7cc9d
 }
