@@ -19,4 +19,9 @@ public class HomePageController {
 
         return "homePage";
     }
+    
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String login() {
+        return "redirect:/profile";
+    }
 }

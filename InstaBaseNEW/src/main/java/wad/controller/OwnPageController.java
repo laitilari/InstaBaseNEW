@@ -10,9 +10,7 @@ public class OwnPageController {
     
     @RequestMapping("/profile")
     public String ProfileDefault(){
-        
-        
-        
+ 
         return "ownPage";
     }
     

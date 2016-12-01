@@ -1,4 +1,3 @@
-
 package wad.domain;
 
 import java.util.List;
@@ -7,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -14,14 +15,18 @@ public class Account extends AbstractPersistable<Long> {
 
     @OneToMany
     private List<Comment> comments;
-    
 
-    private String username;
-    @Column
-    private String password;
     @OneToMany
     private List<Image> images;
-    
+
+    @NotBlank
+    @Length(min = 3, max = 15)
+    private String username;
+
+    @NotBlank
+    @Length(min = 5, max = 15)
+    private String password;
+
 ////    @OneToMany
 ////    private List<Account> followers;
 //
@@ -32,11 +37,6 @@ public class Account extends AbstractPersistable<Long> {
 //    public void setFollowers(List<Account> followers) {
 //        this.followers = followers;
 //    }
-    
-
-    
-    
-
     public List<Image> getImages() {
         return images;
     }
@@ -44,8 +44,7 @@ public class Account extends AbstractPersistable<Long> {
     public void setImages(List<Image> images) {
         this.images = images;
     }
-    
-    
+
     public Comment findCommentByContent(String content) {
         for (Comment c : comments) {
             if (c.getContent().trim().toLowerCase().contains(content.trim().toLowerCase())) {
@@ -54,7 +53,7 @@ public class Account extends AbstractPersistable<Long> {
         }
         return null;
     }
-    
+
     public void addComment(Comment comment) {
         this.comments.add(comment);
     }
