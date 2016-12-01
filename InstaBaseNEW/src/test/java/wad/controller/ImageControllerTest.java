@@ -12,12 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import wad.domain.Account;
 import wad.domain.Comment;
-import wad.domain.Likee;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.CommentRepository;
 import wad.repository.ImageRepository;
-import wad.repository.LikeeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,9 +34,6 @@ public class ImageControllerTest {
     @Autowired
     private ImageRepository imageRepository;
     
-    @Autowired
-    private LikeeRepository likeeRepository;
-    
     @Before
     public void setUp() {
         testImage = new Image();
@@ -46,7 +41,7 @@ public class ImageControllerTest {
     }
     
     public void addingImageToAccountWorks() {
-        testAccount.
+        
     }
 
     // TODO add test methods here.
