@@ -1,4 +1,3 @@
-
 package wad.controller;
 
 import java.lang.reflect.Method;
@@ -16,7 +15,6 @@ import wad.domain.Image;
 import wad.repository.CommentRepository;
 import wad.repository.ImageRepository;
 
-
 @Controller
 public class ImageController {
 
@@ -28,22 +26,27 @@ public class ImageController {
     @RequestMapping(value = "/imagePage/{imageid}", method = RequestMethod.GET)
     public String imagePageDefault(Model model, @PathVariable Long imageid) {
         Image image = imageRepo.getOne(imageid);
-        
+
         model.addAttribute("numberOfLikes", image.getLikes().size());
         model.addAttribute("comments", image.getComments());
         return "imagePage";
     }
 
+    @RequestMapping(value = "/image/{id}/content", method = RequestMethod.GET, produces = "image/png")
+    @ResponseBody
+    public byte[] getContent(@PathVariable Long id) {
+        return imageRepo.findOne(id).getContent();
+    }
+
     @RequestMapping(value = "/imagePage/{imageid}/like", method = RequestMethod.POST)
     public String imagePageAddLike(@PathVariable String imageid) {
         //NOT YET IMPLEMENTED
-        
+
         return "redirect:/imagePage" + imageid;
     }
 
     @RequestMapping(value = "/imagePage/{imageid}/comment", method = RequestMethod.POST)
     public String imagePageComment(@PathVariable String imageid, @RequestParam String comment) {
-        
 
         return "redirect:/imagePage" + imageid;
     }

@@ -1,11 +1,13 @@
 package wad.controller;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import wad.domain.Account;
 import wad.repository.AccountRepository;
 
 @Controller
@@ -15,13 +17,13 @@ public class HomePageController {
     AccountRepository accountRepo;
 
     @RequestMapping("*")
-    public String Home() {
+    public String Home(Authentication a) {
 
-        return "homePage";
+        if(a != null && a.isAuthenticated()){
+            return "redirect:/profile";
+        }
+        return "login";
     }
-    
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String login() {
-        return "redirect:/profile";
-    }
+
+
 }

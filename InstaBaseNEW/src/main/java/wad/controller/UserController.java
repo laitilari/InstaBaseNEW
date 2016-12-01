@@ -1,4 +1,3 @@
-
 package wad.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +10,21 @@ import wad.domain.Account;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 
-
 @Controller
 public class UserController {
-    
+
     @Autowired
     AccountRepository accountRepo;
-    
-    @RequestMapping(value = "/user/{userid}", method = RequestMethod.GET)    
-    public String imagePageDefault(Model model, @PathVariable String userid) {
-        Account account = accountRepo.findByUsername(userid);        
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public String imagePageDefault(Model model, @PathVariable Long id) {
+        Account account = accountRepo.findOne(id);
+        System.out.println(account.getImages().size());
         model.addAttribute("images", account.getImages());
+        model.addAttribute("followersSize", account.getFollowers().size());
+        
 //        model.addAttribute("followers", account.getFollowers().size());
         return "userPage";
     }
-    
-    
+
 }
