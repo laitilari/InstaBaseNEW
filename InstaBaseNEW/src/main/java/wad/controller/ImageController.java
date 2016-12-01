@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import wad.domain.Comment;
 import wad.domain.Image;
-import wad.domain.Likee;
 import wad.repository.CommentRepository;
 import wad.repository.ImageRepository;
-import wad.repository.LikeeRepository;
 
 
 @Controller
@@ -24,8 +22,6 @@ public class ImageController {
 
     @Autowired
     ImageRepository imageRepo;
-    @Autowired
-    LikeeRepository likeeRepo;
     @Autowired
     CommentRepository commentRepo;
 

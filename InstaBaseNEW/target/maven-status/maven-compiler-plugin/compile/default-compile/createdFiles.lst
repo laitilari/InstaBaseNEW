@@ -5,11 +5,9 @@ wad/repository/AccountRepository.class
 wad/controller/UserController.class
 wad/repository/CommentRepository.class
 wad/domain/Image.class
-wad/domain/Likee.class
 wad/service/CustomUserDetailsService.class
 wad/domain/Comment.class
 wad/controller/ImageController.class
 wad/repository/ImageRepository.class
 wad/controller/HomePageController.class
 wad/domain/Account.class
-wad/repository/LikeeRepository.class

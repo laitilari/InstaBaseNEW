@@ -1,6 +1,7 @@
 package wad.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,11 +19,9 @@ public class Image extends AbstractPersistable<Long> {
     @Column
     private String link;
 
-    
     @OneToMany
-    private List<Likee> likes;
+    private List<Account> likes;
 
-    
     @OneToMany
     private List<Comment> comments;
 
@@ -42,11 +41,25 @@ public class Image extends AbstractPersistable<Long> {
         this.account = account;
     }
 
-    public List<Likee> getLikes() {
+    public void addLike(Account account) {
+        this.likes.add(account);
+    }
+
+    public void removeLike(Account account) {
+        List<Account> toRemove = new ArrayList<>();
+        for (Account a : likes) {
+            if (a.getId().equals(account.getId())) {
+                toRemove.add(a);
+            }
+        }
+        likes.removeAll(toRemove);
+    }
+
+    public List<Account> getLikes() {
         return likes;
     }
 
-    public void setLikes(ArrayList<Likee> likes) {
+    public void setLikes(ArrayList<Account> likes) {
         this.likes = likes;
     }
 
