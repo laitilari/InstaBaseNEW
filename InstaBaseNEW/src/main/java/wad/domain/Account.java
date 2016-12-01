@@ -15,7 +15,7 @@ public class Account extends AbstractPersistable<Long> {
     @OneToMany
     private List<Comment> comments;
     
-//    @Id
+
     private String username;
     @Column
     private String password;
@@ -33,8 +33,7 @@ public class Account extends AbstractPersistable<Long> {
 //        this.followers = followers;
 //    }
     
-    private boolean admin;
-    private boolean user;
+
     
     
 
@@ -84,19 +83,4 @@ public class Account extends AbstractPersistable<Long> {
         this.password = password;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public boolean isUser() {
-        return user;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
-    public void setUser(boolean user) {
-        this.user = user;
-    }
 }
