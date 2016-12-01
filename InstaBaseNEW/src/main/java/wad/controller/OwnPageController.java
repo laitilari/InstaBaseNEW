@@ -3,6 +3,7 @@ package wad.controller;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +22,8 @@ public class OwnPageController {
         return "ownPage";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String addFile(@RequestParam("file") MultipartFile file) throws IOException {
+    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    public String addImage(@RequestParam("file") MultipartFile file) throws IOException {
         if (!file.getContentType().equals("image/png")) {
             return "redirect:/profile";
         }
@@ -30,6 +31,13 @@ public class OwnPageController {
         Image i = new Image();
         i.setContent(file.getBytes());
         irepo.save(i);
+
+        return "redirect:/profile";
+    }
+    @RequestMapping(value = "/profile/{id}", method = RequestMethod.DELETE)
+    public String deleteImage(@PathVariable Long id) {
+
+        irepo.delete(id);
 
         return "redirect:/profile";
     }

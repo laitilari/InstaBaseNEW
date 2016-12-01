@@ -32,7 +32,7 @@ and open the template in the editor.
         <ol>
             <li th:each="comment : ${comments}">
 
-                <span th:text="Kommentti">name</span> <span th:text="Kommentoijan nimi"></span> <br/>
+                <span th:text="comment.content">name</span> <span th:text="comment.account"></span> <br/>
 
 
             </li>
