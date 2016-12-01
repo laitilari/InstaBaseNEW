@@ -21,13 +21,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-
         http.authorizeRequests()
                 .anyRequest().permitAll();
+<<<<<<< HEAD
 
         http.formLogin()
                 .loginPage("/login")
                 .permitAll();
+=======
+>>>>>>> 239cceb54bc5ae32c2933c4f7439f70b574187d9
     }
 
     @Autowired
