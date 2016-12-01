@@ -32,7 +32,6 @@ public class HomePageController {
         account.setPassword(password);
         accountRepo.save(account);
         
-        
         return "redirect:/";
     }
     
