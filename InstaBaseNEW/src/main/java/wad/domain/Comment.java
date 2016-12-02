@@ -1,4 +1,3 @@
-
 package wad.domain;
 
 import java.util.Date;
@@ -9,21 +8,18 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-
 @Entity
 public class Comment extends AbstractPersistable<Long> {
-    
+
     @ManyToOne
     private Account account;
-    @Column
+
     private String identificator;
-    @Column
     @Temporal(TemporalType.DATE)
     private Date commentDate;
-    @Column
     private String content;
-    
 
+  
     public Account getAccount() {
         return account;
     }
@@ -55,7 +51,5 @@ public class Comment extends AbstractPersistable<Long> {
     public void setCommentDate(Date commentDate) {
         this.commentDate = commentDate;
     }
-    
-    
-    
+
 }

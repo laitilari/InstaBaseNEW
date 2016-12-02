@@ -14,14 +14,17 @@ import wad.repository.AccountRepository;
 public class UserController {
 
     @Autowired
-    AccountRepository accountRepo;
+    AccountRepository arepo;
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public String imagePageDefault(Model model, @PathVariable Long id) {
-        Account account = accountRepo.findOne(id);
-        System.out.println(account.getImages().size());
+        Account account = arepo.findOne(id);
+       
+        model.addAttribute("user", account);
+        model.addAttribute("userspage", account.getUsername()+"'s profile");
         model.addAttribute("images", account.getImages());
         model.addAttribute("followersSize", account.getFollowers().size());
+        model.addAttribute("users", arepo.findAll());
         
 //        model.addAttribute("followers", account.getFollowers().size());
         return "userPage";

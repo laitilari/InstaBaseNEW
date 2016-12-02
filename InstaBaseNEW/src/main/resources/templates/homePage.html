@@ -11,45 +11,37 @@ and open the template in the editor.
         <!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     </head>
     <body>
-        <a href="/logout">Logout</a>
-        <a href="/homepage">Home</a>
-        <a href="">Delete account</a><br/>
+        <a href="/logout"> Logout</a>
         Followers: <span th:text="${followersSize}">followers</span> <br/>
 
-        <form method="POST" action="/profile" enctype="multipart/form-data">
+        <form method="POST" action="/home" enctype="multipart/form-data">
             <input type="file" name="file" id="file"/>
             <input type="submit" value="Add image"/>
         </form>
 
 
 
-        <!--<img th:src=""/>-->
 
-        <!--        <form th:action="/profile" th:method="POST">
-                    <input type="submit" value="Like"/>
-                </form>-->
-        (<span th:text="${likesSize}">nn</span> likes) <br/>
-
+<!--
         <ol>
             <li th:each="seuraaja : ${seurattavat}">
-
                 <a th:href="seuraajalinkki" th:text="seuraajannimi">actor name</a>
-
-
             </li>
-        </ol>
-
+        </ol>-->
         <ol>
             <li th:each="kuva : ${kuvat}">
-
-               <img th:src="@{/image/{id}/content(id=${kuva.id})}"/>
-
-                <form th:action="@{/profile/{id}(id=${kuva.id})}" th:method="DELETE">
+                <a th:href="@{/image/{id}(id=${kuva.id})}">
+                    <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
+                    <span th:text="${kuva.likes}">likes</span> likes, <span th:text="${kuva.comments}">comments</span> comments
+                </a>
+                <form th:action="@{/home/{id}(id=${kuva.id})}" th:method="DELETE">
                     <input type="submit" value="Remove"/>
                 </form><br/>
-
-
-
+            </li>
+        </ol>
+        <ol>
+            <li th:each="user : ${users}">
+                <a th:href="@{/user/{id}(id=${user.id})}" th:text="${user.username}"> name </a>
             </li>
         </ol>
 

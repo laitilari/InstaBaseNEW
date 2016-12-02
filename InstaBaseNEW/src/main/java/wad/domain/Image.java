@@ -1,9 +1,10 @@
 package wad.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
@@ -18,7 +19,7 @@ public class Image extends AbstractPersistable<Long> {
     private Account account;
 
     @OneToMany
-    private List<Account> likes;  //accounts who like this image
+    private Set<Account> likes;  //accounts who like this image
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
@@ -28,7 +29,7 @@ public class Image extends AbstractPersistable<Long> {
     private List<Comment> comments;
 
     public Image() {
-        this.likes = new ArrayList<>();
+        this.likes = new HashSet<>();
         this.comments = new ArrayList<>();
        
         
@@ -56,12 +57,14 @@ public class Image extends AbstractPersistable<Long> {
         likes.removeAll(toRemove);
     }
 
-    public List<Account> getLikes() {
+    public int getLikes() {
+        return likes.size();
+    }
+    public Set<Account> getLikesSet() {
         return likes;
     }
-
-    public void setLikes(ArrayList<Account> likes) {
-        this.likes = likes;
+    public List<Comment> getCommentList() {
+        return comments;
     }
 
     public byte[] getContent() {
@@ -72,8 +75,8 @@ public class Image extends AbstractPersistable<Long> {
         this.content = content;
     }
 
-    public List<Comment> getComments() {
-        return comments;
+    public int getComments() {
+        return comments.size();
     }
 
     public void setComments(ArrayList<Comment> comments) {

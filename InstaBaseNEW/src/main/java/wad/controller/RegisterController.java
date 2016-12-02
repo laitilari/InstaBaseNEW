@@ -43,15 +43,7 @@ public class RegisterController {
 
     @RequestMapping(value = "/register/createuser", method = RequestMethod.POST)
     public String createNewUser(@Valid @ModelAttribute Account account, BindingResult bindigResult) {
-//        if(accountRepo.findByUsername(username) != null){
-//            return "homePage";
-//        }
-//        Account account = new Account();
-//        account.setUsername(username);
-//        account.setPassword(password);
-//        accountRepo.save(account);
         if (bindigResult.hasErrors()) {
-            System.out.println("Error");
             return "RegisterPage";
         }
         account.setPassword(passwordEncoder.encode(account.getPassword()));
@@ -59,7 +51,6 @@ public class RegisterController {
 
         accountRepo.save(account);
         
-        System.out.println(account.getId());
         return "redirect:/";
     }
 
