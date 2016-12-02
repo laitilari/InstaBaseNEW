@@ -13,7 +13,7 @@ C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\domai
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\repository\AccountRepository.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\controller\UserController.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\service\RegisterService.java
-C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\config\SecurityConfiguration.java
+C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\config\WebSecurityConfig.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\domain\Comment.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\service\ImageService.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\repository\ImageRepository.java

@@ -6,8 +6,8 @@ wad\controller\OwnPageController.class
 wad\domain\Image.class
 wad\controller\ImageController.class
 wad\repository\AccountRepository.class
-wad\config\SecurityConfiguration.class
 wad\repository\ImageRepository.class
 wad\repository\CommentRepository.class
 wad\service\CustomUserDetailsService.class
 wad\domain\Comment.class
+wad\config\WebSecurityConfig.class

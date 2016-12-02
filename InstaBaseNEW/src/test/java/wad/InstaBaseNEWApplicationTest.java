@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import wad.controller.RegisterController;
 import wad.domain.Account;
 
 @RunWith(SpringRunner.class)
@@ -27,6 +28,7 @@ public class InstaBaseNEWApplicationTest {
     private WebApplicationContext webAppContext;
     
     private MockMvc mockMvc;
+    private RegisterController registerController;
     
     public InstaBaseNEWApplicationTest() {
     }
@@ -40,15 +42,13 @@ public class InstaBaseNEWApplicationTest {
     public void RegisteringWorks() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk());
-        Account testAccount = new Account();
-        testAccount.setUsername("testUsername");
-        testAccount.setPassword("testPassword");
-        mockMvc.perform(post("/register/createuser?username=Joel&password=JoelE"));
+                // Needs the final attribute PAGE_REGISTER IN RegisterController
+//                .andExpect(forwarderUrl(registerController.PAGE_REGISTER));
+        mockMvc.perform(post("/register/createuser")
+                .param("username", "tester")
+                .param("password", "tester"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("username"));
     }
     
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
