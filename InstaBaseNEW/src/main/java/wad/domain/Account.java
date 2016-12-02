@@ -1,11 +1,11 @@
 package wad.domain;
 
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -24,19 +24,35 @@ public class Account extends AbstractPersistable<Long> {
     private String username;
 
     @NotBlank
-    @Length(min = 5, max = 15)
-    private String password;
 
-////    @OneToMany
-////    private List<Account> followers;
+    private String password;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> authorities;
+
+    public Account() {
+        this.followers = new ArrayList<>();
+        this.images = new ArrayList<>();
+        this.comments = new ArrayList<>();
+    }
+
+    public List<String> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<String> authorities) {
+        this.authorities = authorities;
+    }
+
+    @OneToMany
+    private List<Account> followers;
 //
-//    public List<Account> getFollowers() {
-//        return followers;
-//    }
-//
-//    public void setFollowers(List<Account> followers) {
-//        this.followers = followers;
-//    }
+    public List<Account> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(List<Account> followers) {
+        this.followers = followers;
+    }
     public List<Image> getImages() {
         return images;
     }

@@ -18,7 +18,7 @@ public class Image extends AbstractPersistable<Long> {
     private Account account;
 
     @OneToMany
-    private List<Account> likes;
+    private List<Account> likes;  //accounts who like this image
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
@@ -29,9 +29,10 @@ public class Image extends AbstractPersistable<Long> {
 
     public Image() {
         this.likes = new ArrayList<>();
+        this.comments = new ArrayList<>();
+       
         
     }
-
 
     public Account getAccount() {
         return account;

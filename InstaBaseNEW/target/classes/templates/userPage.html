@@ -8,22 +8,22 @@ and open the template in the editor.
     <head>
         <title>user page</title>
         <meta charset="UTF-8"/>
-<!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     </head>
     <body>
         <a href="/ownpage">Own page</a>
         <a href="/homepage">Home</a>
-        <a href="">follow_unfollow </a><br/>
-        Followers: <span th:text="">followers</span>  <br/>
-                
+        <a href="hmm?">follow_unfollow </a><br/>
+        Followers: <span th:text="${followersSize}">followers</span>  <br/>
 
-        
+
+
         <ol>
-            <li th:each="image : ${Images}">
-                <img th:src=""/> <br/>          
+            <li th:each="kuva : ${images}">
+                <img th:src="@{/image/{id}/content(id=${kuva.id})}"/>
             </li>
         </ol>
-        
-        
+
+
     </body>
 </html>
