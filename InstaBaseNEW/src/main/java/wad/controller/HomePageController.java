@@ -1,8 +1,8 @@
 package wad.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import wad.domain.Account;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.ImageRepository;
-
+@Profile("production")
 @Controller
 public class HomePageController {
 
