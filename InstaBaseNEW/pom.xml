@@ -59,7 +59,7 @@
         </dependency>
                 
         <!-- FluentLenium testing -->
-        <dependency>
+<!--        <dependency>
             <groupId>org.fluentlenium</groupId>
             <artifactId>fluentlenium-core</artifactId>
             <version>0.13.1</version>
@@ -74,14 +74,14 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>htmlunit-driver</artifactId>
-        </dependency>
+        </dependency>-->
         <!-- TMC -->
-        <dependency>
+<!--        <dependency>
             <groupId>fi.helsinki.cs.tmc</groupId>
             <artifactId>edu-test-utils</artifactId>
             <version>0.4.2</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <!-- JUnit testauskehys -->
         <dependency>
             <groupId>junit</groupId>
@@ -104,7 +104,7 @@
     </build>
         
     <repositories>
-        <repository>
+<!--        <repository>
             <id>tmc</id>
             <name>TMC repo</name>
             <url>http://maven.testmycode.net/nexus/content/groups/public</url>
@@ -114,7 +114,7 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>
+        </repository>-->
         <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
@@ -124,7 +124,7 @@
             </snapshots>
         </repository>
     </repositories>
-    <pluginRepositories>
+<!--    <pluginRepositories>
         <pluginRepository>
             <id>tmc</id>
             <name>TMC repo</name>
@@ -136,5 +136,5 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
-    </pluginRepositories>
+    </pluginRepositories>-->
 </project>
