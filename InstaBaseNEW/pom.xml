@@ -54,12 +54,21 @@
         </dependency>
         
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+        
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
                 
         <!-- FluentLenium testing -->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.fluentlenium</groupId>
             <artifactId>fluentlenium-core</artifactId>
             <version>0.13.1</version>
@@ -76,7 +85,7 @@
             <artifactId>htmlunit-driver</artifactId>
         </dependency>-->
         <!-- TMC -->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>fi.helsinki.cs.tmc</groupId>
             <artifactId>edu-test-utils</artifactId>
             <version>0.4.2</version>
@@ -96,6 +105,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                 <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
                 <configuration>
                     <fork>true</fork>
                 </configuration>
@@ -104,7 +120,7 @@
     </build>
         
     <repositories>
-<!--        <repository>
+        <!--        <repository>
             <id>tmc</id>
             <name>TMC repo</name>
             <url>http://maven.testmycode.net/nexus/content/groups/public</url>
@@ -124,7 +140,7 @@
             </snapshots>
         </repository>
     </repositories>
-<!--    <pluginRepositories>
+    <!--    <pluginRepositories>
         <pluginRepository>
             <id>tmc</id>
             <name>TMC repo</name>
