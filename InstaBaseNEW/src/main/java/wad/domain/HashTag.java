@@ -2,10 +2,8 @@
 package wad.domain;
 
 import javax.persistence.Entity;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-@Profile("production")
 @Entity
 public class HashTag extends AbstractPersistable<Long>{
     

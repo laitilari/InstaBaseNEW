@@ -2,7 +2,6 @@ package wad.controller;
 
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,6 @@ import wad.repository.AccountRepository;
 import wad.repository.CommentRepository;
 import wad.repository.ImageRepository;
 
-@Profile("production")
 @Controller
 public class ImageController {
 
