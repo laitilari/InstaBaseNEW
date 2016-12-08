@@ -19,6 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import wad.controller.RegisterController;
 import wad.domain.Account;
+import wad.repository.AccountRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,6 +27,9 @@ public class InstaBaseNEWApplicationTest {
     
     @Autowired
     private WebApplicationContext webAppContext;
+    
+    @Autowired
+    private AccountRepository accountRepository;
     
     private MockMvc mockMvc;
     private RegisterController registerController;
@@ -39,16 +43,26 @@ public class InstaBaseNEWApplicationTest {
     }
     
     @Test
-    public void RegisteringWorks() throws Exception {
+    public void registeringWorks() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk());
-                // Needs the final attribute PAGE_REGISTER IN RegisterController
-//                .andExpect(forwarderUrl(registerController.PAGE_REGISTER));
         mockMvc.perform(post("/register/createuser")
                 .param("username", "tester")
                 .param("password", "tester"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("username"));
+                .andExpect(status().is3xxRedirection());
+        assertFalse(accountRepository.findByUsername("tester") == null);
     }
     
+//    @Test
+    public void registeringWithBadUsernameDoesNotWork() throws Exception {
+        mockMvc.perform(get("/register"))
+                .andExpect(status().isOk());
+        mockMvc.perform(post("/register/createuser")
+                .param("username", "lol")
+                .param("password", "password"))
+                .andExpect(status().isOk());    // TÄYTYY PALAUTTAA REGISTERPAGE
+        // MUOKKAA!!!
+    }
+    
+    // Registering if user not validated
 }
