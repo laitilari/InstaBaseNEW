@@ -1,13 +1,14 @@
 package wad.domain;
 
 import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+@Profile("production")
 @Entity
 public class Comment extends AbstractPersistable<Long> {
 
