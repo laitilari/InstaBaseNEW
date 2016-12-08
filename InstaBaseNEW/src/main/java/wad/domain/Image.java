@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -28,11 +29,22 @@ public class Image extends AbstractPersistable<Long> {
     @OneToMany
     private List<Comment> comments;
 
+    @OneToMany
+    private List<HashTag> hashTags;
+
+    private String caption;
+
     public Image() {
         this.likes = new HashSet<>();
         this.comments = new ArrayList<>();
-       
-        
+    }
+
+    public List<HashTag> getHashTags() {
+        return hashTags;
+    }
+
+    public void setHashTags(List<HashTag> hashTags) {
+        this.hashTags = hashTags;
     }
 
     public Account getAccount() {
@@ -60,9 +72,11 @@ public class Image extends AbstractPersistable<Long> {
     public int getLikes() {
         return likes.size();
     }
+
     public Set<Account> getLikesSet() {
         return likes;
     }
+
     public List<Comment> getCommentList() {
         return comments;
     }
@@ -82,5 +96,14 @@ public class Image extends AbstractPersistable<Long> {
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+    
 
 }

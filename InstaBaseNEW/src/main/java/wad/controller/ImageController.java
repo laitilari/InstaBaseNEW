@@ -39,6 +39,7 @@ public class ImageController {
         model.addAttribute("kuva", image);
         model.addAttribute("numberOfLikes", image.getLikes());
         model.addAttribute("comments", image.getCommentList());
+        model.addAttribute("title", image.getAccount().getUsername()+ "'s image");
         System.out.println(image.getCommentList().size());
 
         return "imagePage";

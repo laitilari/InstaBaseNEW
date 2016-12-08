@@ -11,23 +11,28 @@ and open the template in the editor.
         <!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     </head>
     <body>
+        <h1> Your home page:</h1>
         <a href="/logout"> Logout</a>
         Followers: <span th:text="${followersSize}">followers</span> <br/>
 
         <form method="POST" action="/home" enctype="multipart/form-data">
             <input type="file" name="file" id="file"/>
             <input type="submit" value="Add image"/>
+            <br/>
+            Image caption:
+            <br/>
+            <input type="text" name="caption" id="caption" size = "55"/>
         </form>
 
 
 
 
-<!--
-        <ol>
-            <li th:each="seuraaja : ${seurattavat}">
-                <a th:href="seuraajalinkki" th:text="seuraajannimi">actor name</a>
-            </li>
-        </ol>-->
+        <!--
+                <ol>
+                    <li th:each="seuraaja : ${seurattavat}">
+                        <a th:href="seuraajalinkki" th:text="seuraajannimi">actor name</a>
+                    </li>
+                </ol>-->
         <ol>
             <li th:each="kuva : ${kuvat}">
                 <a th:href="@{/image/{id}(id=${kuva.id})}">
