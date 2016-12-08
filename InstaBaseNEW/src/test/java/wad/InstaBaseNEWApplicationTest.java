@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -58,11 +59,13 @@ public class InstaBaseNEWApplicationTest {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk());
         mockMvc.perform(post("/register/createuser")
-                .param("username", "lol")
+                .param("username", "no")
                 .param("password", "password"))
-                .andExpect(status().isOk());    // TÄYTYY PALAUTTAA REGISTERPAGE
-        // MUOKKAA!!!
-    }
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("text/html;charset=UTF-8"));
+// TÄYTYY PALAUTTAA REGISTERPAGE
+        // MUOKKAA! EI MENE LÄPI
     
+    }
     // Registering if user not validated
 }
