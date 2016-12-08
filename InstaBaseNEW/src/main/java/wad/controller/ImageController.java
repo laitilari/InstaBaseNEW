@@ -15,6 +15,7 @@ import wad.domain.Comment;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.CommentRepository;
+import wad.repository.HashTagRepository;
 import wad.repository.ImageRepository;
 
 @Controller
@@ -26,6 +27,8 @@ public class ImageController {
     AccountRepository aRepo;
     @Autowired
     CommentRepository commentRepo;
+    @Autowired
+    HashTagRepository hashTagRepository;
 
     @RequestMapping(value = "/image/{id}/content", method = RequestMethod.GET, produces = "image/png")
     @ResponseBody
@@ -39,6 +42,7 @@ public class ImageController {
         model.addAttribute("kuva", image);
         model.addAttribute("numberOfLikes", image.getLikes());
         model.addAttribute("comments", image.getCommentList());
+        model.addAttribute("hashTags", hashTagRepository.findAll());
         model.addAttribute("title", image.getAccount().getUsername()+ "'s image");
         System.out.println(image.getCommentList().size());
 

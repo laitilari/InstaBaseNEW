@@ -1,7 +1,9 @@
 
 package wad.domain;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -9,8 +11,8 @@ public class HashTag extends AbstractPersistable<Long>{
     
     private String tag;
     
-//    @OneToMany
-//    private Image image;
+    @ManyToMany
+    private List<Image> image;
 
     public String getTag() {
         return tag;
@@ -19,15 +21,15 @@ public class HashTag extends AbstractPersistable<Long>{
     public void setTag(String tag) {
         this.tag = tag;
     }
-//
-//    public Image getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(Image image) {
-//        this.image = image;
-//    }
-//    
+
+    public List<Image> getImage() {
+        return image;
+    }
+
+    public void setImage(List<Image> image) {
+        this.image = image;
+    }
+   
     
     
 }

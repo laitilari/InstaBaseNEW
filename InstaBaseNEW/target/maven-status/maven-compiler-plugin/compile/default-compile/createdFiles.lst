@@ -1,6 +1,7 @@
 wad/controller/UserController.class
 wad/service/HomePageService.class
 wad/domain/Image.class
+wad/service/HashTagService.class
 wad/controller/RegisterController.class
 wad/controller/ImageController.class
 wad/service/RegisterService.class
@@ -16,5 +17,6 @@ wad/service/UserService.class
 wad/service/CustomUserDetailsService.class
 wad/service/OwnPageService.class
 wad/domain/Comment.class
+wad/repository/HashTagRepository.class
 wad/repository/ImageRepository.class
 wad/service/ImageService.class

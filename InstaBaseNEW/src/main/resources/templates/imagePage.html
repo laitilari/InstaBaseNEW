@@ -11,12 +11,18 @@ and open the template in the editor.
         <!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     </head>
     <body>
-        <h1 th:text="${title}"></h1>
-        <a href="/home">Home</a><br/>
-        <!--<a href="/userpage">User page</a><br/>-->
+        
+        <h1  th:text="${title}"></h1>
+        <a href="/home">Home</a> 
+        <a th:href="@{/user/{id}/(id=${kuva.account.id})}"> <span th:text="${kuva.account.username}"></span>'s profile </a> 
+        <br/>
 
         <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
-        <a th:href="@{/user/{id}/(id=${kuva.account.id})}"> Back to <span th:text="${kuva.account.username}"></span> </a>
+        <strong th:text="${kuva.caption}"> </strong>
+<!--        <strong th:each="hashTag : ${hashTags}">
+            <a th:href="@{/user/{id}/(id=${kuva.account.id})}" th:text="${hashTag.tag}"> </a>
+        </strong>-->
+       
         <form th:action="@{/image/{id}/like(id=${kuva.id})}" th:method="POST">
             <input type="submit" value="Like"/>
         </form>
@@ -29,6 +35,10 @@ and open the template in the editor.
                 <input type="submit" value="Send"/>           
             </form>
         </div>
+
+
+
+
 
         <ol>
             <li th:each="comment : ${comments}">
