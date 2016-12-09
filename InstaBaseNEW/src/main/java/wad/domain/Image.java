@@ -8,12 +8,11 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-@Profile("production")
 @Entity
 public class Image extends AbstractPersistable<Long> {
 
@@ -30,7 +29,7 @@ public class Image extends AbstractPersistable<Long> {
     @OneToMany
     private List<Comment> comments;
 
-    @OneToMany
+    @ManyToMany
     private List<HashTag> hashTags;
 
     private String caption;
@@ -38,6 +37,7 @@ public class Image extends AbstractPersistable<Long> {
     public Image() {
         this.likes = new HashSet<>();
         this.comments = new ArrayList<>();
+        this.hashTags = new ArrayList<>();
     }
 
     public List<HashTag> getHashTags() {

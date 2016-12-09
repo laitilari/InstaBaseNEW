@@ -2,7 +2,6 @@ package wad.controller;
 
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,7 @@ import wad.domain.Account;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.ImageRepository;
-@Profile("production")
+import wad.service.HashTagService;
 @Controller
 public class HomePageController {
 
@@ -23,6 +22,8 @@ public class HomePageController {
     private ImageRepository irepo;
     @Autowired
     private AccountRepository arepo;
+    @Autowired
+    private HashTagService hashTagService;
 
     @RequestMapping("/home")
     public String ProfileDefault(Authentication a, Model model) {
@@ -39,17 +40,19 @@ public class HomePageController {
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.POST)
-    public String addImage(Authentication a, @RequestParam("file") MultipartFile file) throws IOException {
+    public String addImage(Authentication a, @RequestParam("file") MultipartFile file, @RequestParam String caption) throws IOException {
         if (!file.getContentType().equals("image/png")) {
             return "redirect:/home";
         }
         Image i = new Image();
         Account acc = arepo.findByUsername(a.getName());
         i.setAccount(acc);
+        i.setCaption(caption);
         i.setContent(file.getBytes());
         acc.getImages().add(i);
         irepo.save(i);
         arepo.save(acc);
+        hashTagService.addHashTags(i.getId());
 
         return "redirect:/home";
     }

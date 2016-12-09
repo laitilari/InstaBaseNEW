@@ -2,7 +2,6 @@ package wad.controller;
 
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +15,9 @@ import wad.domain.Comment;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.CommentRepository;
+import wad.repository.HashTagRepository;
 import wad.repository.ImageRepository;
 
-@Profile("production")
 @Controller
 public class ImageController {
 
@@ -28,6 +27,8 @@ public class ImageController {
     AccountRepository aRepo;
     @Autowired
     CommentRepository commentRepo;
+    @Autowired
+    HashTagRepository hashTagRepository;
 
     @RequestMapping(value = "/image/{id}/content", method = RequestMethod.GET, produces = "image/png")
     @ResponseBody
@@ -41,6 +42,7 @@ public class ImageController {
         model.addAttribute("kuva", image);
         model.addAttribute("numberOfLikes", image.getLikes());
         model.addAttribute("comments", image.getCommentList());
+        model.addAttribute("hashTags", hashTagRepository.findAll());
         model.addAttribute("title", image.getAccount().getUsername()+ "'s image");
         System.out.println(image.getCommentList().size());
 

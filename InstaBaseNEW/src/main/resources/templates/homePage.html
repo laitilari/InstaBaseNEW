@@ -37,8 +37,12 @@ and open the template in the editor.
             <li th:each="kuva : ${kuvat}">
                 <a th:href="@{/image/{id}(id=${kuva.id})}">
                     <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
-                    <span th:text="${kuva.likes}">likes</span> likes, <span th:text="${kuva.comments}">comments</span> comments
                 </a>
+                <strong th:text="${kuva.caption}"> </strong> <br/>
+               
+                <span th:text="${kuva.likes}">likes</span> likes, <span th:text="${kuva.comments}">comments</span> 
+                <a th:href="@{/image/{id}(id=${kuva.id})}">comments </a>
+
                 <form th:action="@{/home/{id}(id=${kuva.id})}" th:method="DELETE">
                     <input type="submit" value="Remove"/>
                 </form><br/>
