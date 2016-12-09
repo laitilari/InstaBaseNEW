@@ -1,6 +1,9 @@
 package wad.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -31,7 +34,9 @@ public class HomePageController {
         if (a == null) {
             return "redirect:/";
         } else {
-            model.addAttribute("kuvat", acc.getImages());
+            List<Image> list = acc.getImages();
+            Collections.reverse(list);
+            model.addAttribute("kuvat", list);
             model.addAttribute("accountid", acc.getId());
             model.addAttribute("users", arepo.findAll());
         }
