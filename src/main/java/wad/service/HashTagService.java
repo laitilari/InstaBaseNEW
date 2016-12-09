@@ -39,6 +39,7 @@ public class HashTagService {
                 }
 
                 imageRepository.findOne(image.getId()).getHashTags().add(hashTag);
+                hashTag.getImages().add(image);
                 hashTagRepository.save(hashTag);
             }
         }

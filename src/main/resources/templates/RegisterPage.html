@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>RegisterPage</title>
@@ -18,7 +13,7 @@ and open the template in the editor.
                     <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username must be between 3 and 15 characters long</td>
                 </tr>
                 <tr>
-                    <td>Password </td>
+                    <td>Password: </td>
                     <td><input type="password" th:field="*{password}" /></td>
                     <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password must be between 5 and 15 characters long</td>
                 </tr>

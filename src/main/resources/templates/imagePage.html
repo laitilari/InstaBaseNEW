@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Image page</title>
@@ -18,8 +13,8 @@ and open the template in the editor.
 
         <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
         <strong th:text="${kuva.caption}"> </strong>
-        <strong th:each="hashTag : ${hashTags}">
-            <a th:href="@{/user/{id}/(id=${kuva.account.id})}" th:text="${hashTag.tag}"> </a>
+        <strong th:each="hashtag : ${hashtags}">
+            <a th:href="@{/hashtag/{id}/(id=${hashtag.id})}" th:text="${hashtag.tag}"> </a>
         </strong>
        
         <form th:action="@{/image/{id}/like(id=${kuva.id})}" th:method="POST">

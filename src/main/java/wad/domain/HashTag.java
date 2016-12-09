@@ -1,6 +1,7 @@
 
 package wad.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -12,7 +13,11 @@ public class HashTag extends AbstractPersistable<Long>{
     private String tag;
     
     @ManyToMany
-    private List<Image> image;
+    private List<Image> images;
+
+    public HashTag() {
+        this.images = new ArrayList<>();
+    }
 
     public String getTag() {
         return tag;
@@ -22,12 +27,12 @@ public class HashTag extends AbstractPersistable<Long>{
         this.tag = tag;
     }
 
-    public List<Image> getImage() {
-        return image;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setImage(List<Image> image) {
-        this.image = image;
+    public void setImages(List<Image> image) {
+        this.images = image;
     }
    
     
