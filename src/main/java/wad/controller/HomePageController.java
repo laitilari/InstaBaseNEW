@@ -50,8 +50,8 @@ public class HomePageController {
         i.setCaption(caption);
         i.setContent(file.getBytes());
         acc.getImages().add(i);
-        irepo.save(i);
-        arepo.save(acc);
+        i = irepo.save(i);
+        acc = arepo.save(acc);
         hashTagService.addHashTags(i.getId());
 
         return "redirect:/home";

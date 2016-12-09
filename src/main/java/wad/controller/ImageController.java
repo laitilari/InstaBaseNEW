@@ -1,9 +1,9 @@
 package wad.controller;
 
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +32,7 @@ public class ImageController {
 
     @RequestMapping(value = "/image/{id}/content", method = RequestMethod.GET, produces = "image/png")
     @ResponseBody
+    @Transactional(readOnly = true)
     public byte[] getContent(@PathVariable Long id) {
         return imageRepo.findOne(id).getContent();
     }
@@ -43,7 +44,7 @@ public class ImageController {
         model.addAttribute("numberOfLikes", image.getLikes());
         model.addAttribute("comments", image.getCommentList());
         model.addAttribute("hashTags", hashTagRepository.findAll());
-        model.addAttribute("title", image.getAccount().getUsername()+ "'s image");
+        model.addAttribute("title", image.getAccount().getUsername() + "'s image");
         System.out.println(image.getCommentList().size());
 
         return "imagePage";
