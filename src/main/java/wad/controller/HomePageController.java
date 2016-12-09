@@ -18,6 +18,8 @@ import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.ImageRepository;
 import wad.service.HashTagService;
+import wad.service.ImageService;
+
 @Controller
 public class HomePageController {
 
@@ -27,6 +29,8 @@ public class HomePageController {
     private AccountRepository arepo;
     @Autowired
     private HashTagService hashTagService;
+    @Autowired
+    private ImageService imageService;
 
     @RequestMapping("/home")
     public String ProfileDefault(Authentication a, Model model) {
@@ -34,9 +38,8 @@ public class HomePageController {
         if (a == null) {
             return "redirect:/";
         } else {
-            List<Image> list = acc.getImages();
-            Collections.reverse(list);
-            model.addAttribute("kuvat", list);
+
+            model.addAttribute("kuvat", imageService.reverseImageList(acc.getImages()));
             model.addAttribute("accountid", acc.getId());
             model.addAttribute("users", arepo.findAll());
         }

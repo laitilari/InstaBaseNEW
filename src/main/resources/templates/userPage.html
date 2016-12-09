@@ -8,9 +8,6 @@
 
         <h1 th:text="${userspage}"></h1> <br/>
         <a href="/">Home</a> <br/>
-        <!--        <a href="hmm?">follow_unfollow </a>-->
-        <!--        Followers: <span th:text="${followersSize}">followers</span>  <br/>-->
-
         <ol>
             <li th:each="kuva : ${images}">
                 <a th:href="@{/image/{id}(id=${kuva.id})}">

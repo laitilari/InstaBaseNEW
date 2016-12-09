@@ -6,8 +6,6 @@
     <body>
         <h1> Your home page:</h1>
         <a href="/logout"> Logout</a>
-        Followers: <span th:text="${followersSize}">followers</span> <br/>
-
         <form method="POST" action="/home" enctype="multipart/form-data">
             <input type="file" name="file" id="file"/>
             <input type="submit" value="Add PNG-image"/>
