@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Own page</title>
+        <!--<meta charset="UTF-8"/>-->
+        <!--        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    </head>
+    <body>
+        <h1> Your home page:</h1>
+        <a href="/logout"> Logout</a>
+        Followers: <span th:text="${followersSize}">followers</span> <br/>
+
+        <form method="POST" action="/home" enctype="multipart/form-data">
+            <input type="file" name="file" id="file"/>
+            <input type="submit" value="Add image"/>
+            <br/>
+            Image caption:
+            <br/>
+            <input type="text" name="caption" id="caption" size = "55"/>
+        </form>
+
+
+
+
+        <!--
+                <ol>
+                    <li th:each="seuraaja : ${seurattavat}">
+                        <a th:href="seuraajalinkki" th:text="seuraajannimi">actor name</a>
+                    </li>
+                </ol>-->
+        <ol>
+            <li th:each="kuva : ${kuvat}">
+                <a th:href="@{/image/{id}(id=${kuva.id})}">
+                    <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
+                </a>
+                <strong th:text="${kuva.caption}"> </strong> <br/>
+               
+                <span th:text="${kuva.likes}">likes</span> likes, <span th:text="${kuva.comments}">comments</span> 
+                <a th:href="@{/image/{id}(id=${kuva.id})}">comments </a>
+
+                <form th:action="@{/home/{id}(id=${kuva.id})}" th:method="DELETE">
+                    <input type="submit" value="Remove"/>
+                </form><br/>
+            </li>
+        </ol>
+        <ol>
+            <li th:each="user : ${users}">
+                <a th:href="@{/user/{id}(id=${user.id})}" th:text="${user.username}"> name </a>
+            </li>
+        </ol>
+
+
+    </body>
+</html>
