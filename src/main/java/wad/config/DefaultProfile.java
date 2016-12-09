@@ -8,21 +8,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("production")
-public class ProductionProfile {
+@Profile("default")
+public class DefaultProfile {
 
     @Bean
     public BasicDataSource dataSource() throws URISyntaxException {
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-
+        String dbUrl = "jdbc:postgresql://ec2-54-75-228-125.eu-west-1.compute.amazonaws.com:5432/d8k4v9q5mtkgev?sslmode=require&user=enxjzxxbfdbnst&password=-eiB2ItOtJSoSjEhpuw6boE4Np";
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl(dbUrl);
-        basicDataSource.setUsername(username);
-        basicDataSource.setPassword(password);
+        basicDataSource.setUsername("enxjzxxbfdbnst");
+        basicDataSource.setPassword("-eiB2ItOtJSoSjEhpuw6boE4Np");
 
         return basicDataSource;
     }
