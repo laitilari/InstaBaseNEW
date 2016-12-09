@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\domain\HashTag.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\service\CustomUserDetailsService.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\service\OwnPageService.java
@@ -19,25 +18,3 @@ C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\confi
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\domain\Comment.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\service\ImageService.java
 C:\Users\Joel\Documents\GitHub\InstaBaseNEW\InstaBaseNEW\src\main\java\wad\repository\ImageRepository.java
-=======
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/controller/HomePageController.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/config/WebSecurityConfig.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/domain/Account.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/controller/RegisterController.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/repository/CommentRepository.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/service/HomePageService.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/controller/DefaultController.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/service/RegisterService.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/InstaBaseNEWApplication.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/domain/Image.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/repository/AccountRepository.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/service/ImageService.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/controller/ImageController.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/controller/UserController.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/repository/ImageRepository.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/domain/Comment.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/domain/HashTag.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/service/UserService.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/service/CustomUserDetailsService.java
-/home/ad/fshome2/u2/i/ilarilai/Linux/NetBeansProjects/InstaBaseNEW/InstaBaseNEW/src/main/java/wad/service/OwnPageService.java
->>>>>>> c8d46d9e0c4431fe6bc57a0c1306fbe025356d06
