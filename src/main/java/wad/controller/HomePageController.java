@@ -38,7 +38,6 @@ public class HomePageController {
         if (a == null) {
             return "redirect:/";
         } else {
-
             model.addAttribute("kuvat", imageService.reverseImageList(acc.getImages()));
             model.addAttribute("accountid", acc.getId());
             model.addAttribute("users", arepo.findAll());
