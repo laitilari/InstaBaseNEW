@@ -2,6 +2,7 @@ package wad.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,6 +18,7 @@ public class Account extends AbstractPersistable<Long> {
     private List<Comment> comments;
 
     @OneToMany
+    @Basic(fetch = FetchType.LAZY)
     private List<Image> images;
 
     @NotBlank
