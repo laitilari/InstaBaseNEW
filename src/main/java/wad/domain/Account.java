@@ -3,6 +3,7 @@ package wad.domain;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +23,7 @@ public class Account extends AbstractPersistable<Long> {
     private List<Image> images;
 
     @NotBlank
+    @Column(unique=true)
     @Length(min = 3, max = 15)
     private String username;
 
@@ -47,6 +49,7 @@ public class Account extends AbstractPersistable<Long> {
     @OneToMany
     private List<Account> followers;
 //
+
     public List<Account> getFollowers() {
         return followers;
     }
@@ -54,6 +57,7 @@ public class Account extends AbstractPersistable<Long> {
     public void setFollowers(List<Account> followers) {
         this.followers = followers;
     }
+
     public List<Image> getImages() {
         return images;
     }
