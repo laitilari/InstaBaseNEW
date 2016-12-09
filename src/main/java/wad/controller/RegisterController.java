@@ -25,6 +25,16 @@ public class RegisterController {
         return new Account();
     }
     
+    @PostConstruct
+    public void init() {
+        Account pekka = new Account();
+        pekka.setUsername("pekka");
+        pekka.setPassword(passwordEncoder.encode("pekka"));
+        pekka.setAuthorities(Arrays.asList("USER"));
+        accountRepo.save(pekka);
+        
+    }
+
     @RequestMapping("/register")
     public String Home() {
 
