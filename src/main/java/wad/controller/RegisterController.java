@@ -48,12 +48,12 @@ public class RegisterController {
         }
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAuthorities(Arrays.asList("USER"));
-
-        for (Account a : accountRepo.findAll()) {
-            if (a.getUsername().equals(account.getUsername())) {
-                return "redirect:/register";
-            }
-        }
+//
+//        for (Account a : accountRepo.findAll()) {
+//            if (a.getUsername().equals(account.getUsername())) {
+//                return "redirect:/register";
+//            }
+//        }
         accountRepo.save(account);
 
         return "redirect:/";
