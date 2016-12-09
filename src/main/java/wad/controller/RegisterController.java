@@ -20,11 +20,12 @@ public class RegisterController {
     AccountRepository accountRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @ModelAttribute
     private Account getAccount() {
         return new Account();
     }
-    
+
     @PostConstruct
     public void init() {
         Account pekka = new Account();
@@ -48,9 +49,13 @@ public class RegisterController {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAuthorities(Arrays.asList("USER"));
 
-        if (accountRepo.findByUsername(account.getUsername().))
+        for (Account a : accountRepo.findAll()) {
+            if (a.getUsername().equals(account.getUsername())) {
+                return "redirect:/register";
+            }
+        }
         accountRepo.save(account);
-        
+
         return "redirect:/";
     }
 

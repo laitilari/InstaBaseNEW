@@ -22,7 +22,7 @@ public class Image extends AbstractPersistable<Long> {
     @OneToMany
     private Set<Account> likes;  //accounts who like this image
 
-//    @Lob
+    @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] content;
 
