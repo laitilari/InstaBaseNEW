@@ -32,7 +32,6 @@ public class RegisterController {
         pekka.setPassword(passwordEncoder.encode("pekka"));
         pekka.setAuthorities(Arrays.asList("USER"));
         accountRepo.save(pekka);
-        
     }
 
     @RequestMapping("/register")
@@ -49,6 +48,7 @@ public class RegisterController {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAuthorities(Arrays.asList("USER"));
 
+        if (accountRepo.findByUsername(account.getUsername().))
         accountRepo.save(account);
         
         return "redirect:/";
