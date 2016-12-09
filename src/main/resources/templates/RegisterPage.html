@@ -10,15 +10,6 @@ and open the template in the editor.
     </head>
     <body>
         <h1> Register:</h1>
-        
-        
-        
-<!--        <form action="/createuser" method="POST">
-            <input type="text" name="username" required="required"/><br/>
-            <input type="password" name="password" required="required"/><br/>
-            <input type="submit" value="Register"/>           
-        </form>-->
-
         <form action="#" th:action="@{/register/createuser}" th:object="${account}" method="POST">
             <table>
                 <tr>
