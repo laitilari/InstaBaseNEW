@@ -24,15 +24,6 @@ and open the template in the editor.
             <input type="text" name="caption" id="caption" size = "55"/>
         </form>
 
-
-
-
-        <!--
-                <ol>
-                    <li th:each="seuraaja : ${seurattavat}">
-                        <a th:href="seuraajalinkki" th:text="seuraajannimi">actor name</a>
-                    </li>
-                </ol>-->
         <ol>
             <li th:each="kuva : ${kuvat}">
                 <a th:href="@{/image/{id}(id=${kuva.id})}">
