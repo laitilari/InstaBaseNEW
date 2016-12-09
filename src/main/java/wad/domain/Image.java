@@ -1,5 +1,6 @@
 package wad.domain;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +12,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.Type;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -22,7 +24,7 @@ public class Image extends AbstractPersistable<Long> {
     @OneToMany
     private Set<Account> likes;  //accounts who like this image
 
-    @Lob
+    @Type(type = "image")
     @Basic(fetch = FetchType.LAZY)
     private byte[] content;
 
