@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Own page</title>
+    </head>
+    <body>
+        <h1> Your home page:</h1>
+        <a href="/logout"> Logout</a>
+        <form method="POST" action="/home" enctype="multipart/form-data">
+            <input type="file" name="file" id="file"/>
+            <input type="submit" value="Add PNG-image"/>
+            <br/>
+            Image caption:
+            <br/>
+            <input type="text" name="caption" id="caption" size = "55"/>
+        </form>
+
+        <ol>
+            <li th:each="kuva : ${kuvat}">
+                <a th:href="@{/image/{id}(id=${kuva.id})}">
+                    <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
+                </a>
+                <strong th:text="${kuva.caption}"> </strong> <br/>
+               
+                <span th:text="${kuva.likes}">likes</span> likes, <span th:text="${kuva.comments}">comments</span> 
+                <a th:href="@{/image/{id}(id=${kuva.id})}">comments </a>
+
+                <form th:action="@{/home/{id}(id=${kuva.id})}" th:method="DELETE">
+                    <input type="submit" value="Remove"/>
+                </form><br/>
+            </li>
+        </ol>
+        <ol>
+            <li th:each="user : ${users}">
+                <a th:href="@{/user/{id}(id=${user.id})}" th:text="${user.username}"> name </a>
+            </li>
+        </ol>
+
+
+    </body>
+</html>

@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-wad\service\HomePageService.class
-wad\service\RegisterService.class
-wad\controller\RegisterController.class
-wad\service\ImageService.class
-wad\controller\UserController.class
-wad\InstaBaseNEWApplication.class
-wad\controller\HomePageController.class
-wad\domain\Account.class
-wad\controller\DefaultController.class
-wad\domain\Image.class
-wad\controller\ImageController.class
-wad\domain\HashTag.class
-wad\repository\AccountRepository.class
-wad\service\UserService.class
-wad\repository\ImageRepository.class
-wad\repository\CommentRepository.class
-wad\service\OwnPageService.class
-wad\service\CustomUserDetailsService.class
-wad\domain\Comment.class
-wad\config\WebSecurityConfig.class
-=======
 wad/controller/UserController.class
 wad/service/HomePageService.class
 wad/domain/Image.class
@@ -42,4 +20,3 @@ wad/domain/Comment.class
 wad/repository/HashTagRepository.class
 wad/repository/ImageRepository.class
 wad/service/ImageService.class
->>>>>>> 3efc47545eaeb223bbc22872386ace6b37aa1982
