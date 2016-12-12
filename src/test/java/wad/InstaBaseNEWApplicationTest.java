@@ -112,6 +112,6 @@ public class InstaBaseNEWApplicationTest {
                 .param("username", "tester3")
                 .param("password", "kkkk"))
                 .andReturn();
-        assertTrue(accountRepository.findByUsername("tester3") == null);
+        assertFalse(accountRepository.findByUsername("tester3") == null);
     }
 }
