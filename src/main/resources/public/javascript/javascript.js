@@ -1,9 +1,3 @@
 function sayHello() {
-    alert("hello there");
+    alert("Welcome to InstaBase!");
 }
-
-function aseta() {
-	var arvo = document.getElementById("tekstikentta").value;
-	document.getElementById("kommentti").innerHTML = arvo;
-}
-
