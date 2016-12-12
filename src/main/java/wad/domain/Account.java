@@ -28,7 +28,9 @@ public class Account extends AbstractPersistable<Long> {
     private String username;
 
     @NotBlank
+    @Length(min = 5)
     private String password;
+    
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> authorities;
 

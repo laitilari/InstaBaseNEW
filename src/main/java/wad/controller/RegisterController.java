@@ -1,7 +1,8 @@
 package wad.controller;
 
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import wad.domain.Account;
+import wad.domain.Log;
 import wad.repository.AccountRepository;
+import wad.repository.LogRepository;
 
 @Controller
 public class RegisterController {
@@ -20,11 +23,15 @@ public class RegisterController {
     AccountRepository accountRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    @Autowired
+    private LogRepository logRepository;
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+     
     @ModelAttribute
     private Account getAccount() {
         return new Account();
     }
+    
 
 //    @PostConstruct
 //    public void init() {
@@ -49,6 +56,9 @@ public class RegisterController {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAuthorities(Arrays.asList("USER"));
         accountRepo.save(account);
+//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//        Log log = new Log("");
+//        logRepository.
 
         return "redirect:/";
     }

@@ -1,7 +1,5 @@
 package wad;
 
-
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -27,24 +25,24 @@ import wad.repository.AccountRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class InstaBaseNEWApplicationTest {
-    
+
     @Autowired
     private WebApplicationContext webAppContext;
-    
+
     @Autowired
     private AccountRepository accountRepository;
-    
+
     private MockMvc mockMvc;
     private RegisterController registerController;
-    
+
     public InstaBaseNEWApplicationTest() {
     }
-    
+
     @Before
     public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
     }
-    
+
     @Test
     public void registeringWorks() throws Exception {
         mockMvc.perform(get("/register"))
@@ -55,22 +53,65 @@ public class InstaBaseNEWApplicationTest {
                 .andExpect(status().is3xxRedirection());
         assertFalse(accountRepository.findByUsername("tester") == null);
     }
-    
+
 //    @Test
     public void registeringWithBadUsernameDoesNotWork() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk());
         MvcResult res = (MvcResult) mockMvc.perform(post("/register/createuser")
-                .param("username", "nouuu")
+                .param("username", "nouuuu")
                 .param("password", "password"));
         String content = res.getResponse().getContentAsString();
         assertTrue(content.contains("RegisterPage"));
-        
+
 //                .andExpect(status().isOk())
 //                .andExpect(content().contentType("text/html;charset=UTF-8"));
 // TÄYTYY PALAUTTAA REGISTERPAGE
         // MUOKKAA! EI MENE LÄPI
-    
     }
+
     // Registering if user not validated
+    
+    @Test
+    public void registeringWithTooShortUsernameDoesNotWork() throws Exception {
+        mockMvc.perform(get("/register"))
+                .andExpect(status().isOk());
+        mockMvc.perform(post("/register/createuser")
+                .param("username", "k")
+                .param("password", "tester"))
+                .andReturn();
+        assertTrue(accountRepository.findByUsername("k") == null);
+    }
+    @Test
+    public void registeringWithTooShortUsernameDoesNotWork2() throws Exception {
+        mockMvc.perform(get("/register"))
+                .andExpect(status().isOk());
+        mockMvc.perform(post("/register/createuser")
+                .param("username", "kk")
+                .param("password", "tester"))
+                .andReturn();
+        assertTrue(accountRepository.findByUsername("kk") == null);
+    }
+    
+    @Test
+    public void registeringWithTooShortPasswordDoesNotWork() throws Exception {
+        mockMvc.perform(get("/register"))
+                .andExpect(status().isOk());
+        mockMvc.perform(post("/register/createuser")
+                .param("username", "tester2")
+                .param("password", "k"))
+                .andReturn();
+        assertTrue(accountRepository.findByUsername("tester2") == null);
+    }
+    
+    @Test
+    public void registeringWithTooShortPasswordDoesNotWork2() throws Exception {
+        mockMvc.perform(get("/register"))
+                .andExpect(status().isOk());
+        mockMvc.perform(post("/register/createuser")
+                .param("username", "tester3")
+                .param("password", "kkkk"))
+                .andReturn();
+        assertTrue(accountRepository.findByUsername("tester3") == null);
+    }
 }
