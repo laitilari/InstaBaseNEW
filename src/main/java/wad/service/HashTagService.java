@@ -18,11 +18,11 @@ public class HashTagService {
 
     public void addHashTags(Long imageId) {
         Image image = imageRepository.findOne(imageId);
-        if(image == null){
+        if (image == null) {
             return;
         }
         String[] splits = image.getCaption().split(" ");
-        
+
         if (splits == null) {
             return;
         }
@@ -36,6 +36,9 @@ public class HashTagService {
                     hashTag.setTag(tag);
                 } else {
                     hashTag = tags.get(0);
+                    if (hashTag.getImages().contains(image)) {
+                        continue;
+                    }
                 }
 
                 imageRepository.findOne(image.getId()).getHashTags().add(hashTag);
@@ -43,7 +46,6 @@ public class HashTagService {
                 hashTagRepository.save(hashTag);
             }
         }
-       
 
     }
 

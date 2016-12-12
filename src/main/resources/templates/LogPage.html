@@ -6,37 +6,12 @@
     </head>
     <body>
         
-        <h1  th:text="${title}"></h1>
+        <h1> Log's for Instabase</h1>
         <a href="/home">Home</a> 
-        <a th:href="@{/user/{id}/(id=${kuva.account.id})}"> <span th:text="${kuva.account.username}"></span>'s profile </a> 
-        <br/>
-
-        <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
-        <strong th:text="${kuva.caption}"> </strong>
-        <strong th:each="hashtag : ${hashtags}">
-            <a th:href="@{/hashtag/{id}/(id=${hashtag.id})}" th:text="${hashtag.tag}"> </a>
-        </strong>
-       
-        <form th:action="@{/image/{id}/like(id=${kuva.id})}" th:method="POST">
-            <input type="submit" value="Like"/>
-        </form>
-        <span th:text="${numberOfLikes}"> </span> likes <br/>
-
-        <div>
-            Write a comment:<br/>
-            <form th:action="@{/image/{id}/comment(id=${kuva.id})}" method="POST">
-                <input type="text" name="comment"/><br/>
-                <input type="submit" value="Send"/>           
-            </form>
-        </div>
+        
         <ol>
-            <li th:each="comment : ${comments}">
-
-                <span th:text="${comment.content}">name</span>
-                <br/>
-                <a th:href="@{/user/{id}(id=${comment.account.id})}">
-                    <span th:text="${comment.account.username}"></span>
-                </a>
+            <li th:each="log : ${logs}">
+                <span th:text="${log.log}"> </span>
                 <br/>
             </li>
         </ol>
