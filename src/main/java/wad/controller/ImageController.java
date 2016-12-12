@@ -48,6 +48,7 @@ public class ImageController {
         model.addAttribute("comments", image.getCommentList());
         model.addAttribute("hashtags", image.getHashTags());
         model.addAttribute("title", image.getAccount().getUsername() + "'s image");
+         model.addAttribute("account", aRepo.findByUsername(a.getName()));
 
         Account account = aRepo.findByUsername(a.getName());
         logService.addLog("GET /image/{id}, Loaded image with id = " + id, account);

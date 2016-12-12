@@ -29,6 +29,7 @@ public class UserController {
         model.addAttribute("user", account);
         model.addAttribute("userspage", account.getUsername() + "'s profile");
         model.addAttribute("users", arepo.findAll());
+        model.addAttribute("account", account);
         logService.addLog("GET /user/{id}, Loaded user's page with id = " + id, account);
         return "userPage";
     }

@@ -36,12 +36,13 @@ public class HomePageController {
     @RequestMapping("/home")
     public String ProfileDefault(Authentication a, Model model) {
         Account account = arepo.findByUsername(a.getName());
-        if (a == null) {
+        if (account == null) {
             return "redirect:/";
         } else {
             model.addAttribute("kuvat", imageService.reverseImageList(account.getImages()));
             model.addAttribute("accountid", account.getId());
             model.addAttribute("users", arepo.findAll());
+            model.addAttribute("account", account);
         }
 
         logService.addLog("GET /home", account);
@@ -74,15 +75,27 @@ public class HomePageController {
         account.getImages().remove(i);
         arepo.save(account);
         irepo.delete(id);
-        
-         logService.addLog("DELETE /home/{id}, Deleted image with id = " + i.getId(), account);
+
+        logService.addLog("DELETE /home/{id}, Deleted image with id = " + i.getId(), account);
         return "redirect:/home";
     }
 
-
-
-
-
-
+    @RequestMapping(value = "/home/{id}/english", method = RequestMethod.POST)
+    public String changeLanguageToEnglish(Authentication a, @PathVariable Long id) {
+        Account account = arepo.findOne(id);
+        account.setFinnish(false);
+        arepo.save(account);
+        logService.addLog("POST /home/{id}/english, User changed language to english", account);
+        return "redirect:/home";
+    }
+    
+     @RequestMapping(value = "/home/{id}/finnish", method = RequestMethod.POST)
+    public String changeLanguageToFinnish(Authentication a, @PathVariable Long id) {
+        Account account = arepo.findOne(id);
+        account.setFinnish(true);
+        arepo.save(account);
+        logService.addLog("POST /home/{id}/finnish, User changed language to finnish", account);
+        return "redirect:/home";
+    }
 
 }

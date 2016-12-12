@@ -33,11 +33,14 @@ public class Account extends AbstractPersistable<Long> {
     
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> authorities;
+    
+    private boolean finnish;
 
     public Account() {
         this.followers = new ArrayList<>();
         this.images = new ArrayList<>();
         this.comments = new ArrayList<>();
+        this.finnish = false;
     }
 
     public List<String> getAuthorities() {
@@ -104,5 +107,14 @@ public class Account extends AbstractPersistable<Long> {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public boolean isFinnish() {
+        return finnish;
+    }
+
+    public void setFinnish(boolean finnish) {
+        this.finnish = finnish;
+    }
+    
 
 }

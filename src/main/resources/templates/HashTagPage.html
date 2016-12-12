@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>HashTags</title>
-
     </head>
     <body>
 
         <h1  th:text="${hashtag}"></h1>
-        <a href="/home">Home</a> 
+        <div th:if="${account.finnish}"> <a href="/">Profiilisivu</a> <br/> </div>
+        <div th:unless="${account.finnish}"> <a href="/">Home</a> <br/> </div>
         <ol>
             <li th:each="kuva : ${images}">
                 <a th:href="@{/image/{id}(id=${kuva.id})}">
@@ -16,8 +16,10 @@
 
                 <br/>
                 <strong th:text="${kuva.caption}"> </strong> <br/>
-                <span th:text="${kuva.likes}">likes</span> likes, <span th:text="${kuva.comments}">comments</span>
-                <a th:href="@{/image/{id}(id=${kuva.id})}">comments</a>
+                <div th:if="${account.finnish}"><span th:text="${kuva.likes}">likes</span> tykkäystä, <span th:text="${kuva.comments}"> kommenttia</span>
+                <a th:href="@{/image/{id}(id=${kuva.id})}">kommenttia</a></div>
+                <div th:unless="${account.finnish}"><span th:text="${kuva.likes}">likes</span> likes, <span th:text="${kuva.comments}">comments</span>
+                <a th:href="@{/image/{id}(id=${kuva.id})}">comments</a></div>
             </li>
         </ol>
     </body>
