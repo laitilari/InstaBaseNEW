@@ -17,6 +17,7 @@ import wad.repository.ImageRepository;
 import wad.repository.LogRepository;
 import wad.service.HashTagService;
 import wad.service.ImageService;
+import wad.service.LogService;
 
 @Controller
 public class HomePageController {
@@ -29,18 +30,21 @@ public class HomePageController {
     private HashTagService hashTagService;
     @Autowired
     private ImageService imageService;
-
+    @Autowired
+    private LogService logService;
 
     @RequestMapping("/home")
     public String ProfileDefault(Authentication a, Model model) {
-        Account acc = arepo.findByUsername(a.getName());
+        Account account = arepo.findByUsername(a.getName());
         if (a == null) {
             return "redirect:/";
         } else {
-            model.addAttribute("kuvat", imageService.reverseImageList(acc.getImages()));
-            model.addAttribute("accountid", acc.getId());
+            model.addAttribute("kuvat", imageService.reverseImageList(account.getImages()));
+            model.addAttribute("accountid", account.getId());
             model.addAttribute("users", arepo.findAll());
         }
+
+        logService.addLog("GET /home", account);
 
         return "homePage";
     }
@@ -51,32 +55,34 @@ public class HomePageController {
             return "redirect:/home";
         }
         Image i = new Image();
-        Account acc = arepo.findByUsername(a.getName());
-        i.setAccount(acc);
+        Account account = arepo.findByUsername(a.getName());
+        i.setAccount(account);
         i.setCaption(caption);
         i.setContent(file.getBytes());
-        acc.getImages().add(i);
+        account.getImages().add(i);
         i = irepo.save(i);
-        acc = arepo.save(acc);
+        account = arepo.save(account);
         hashTagService.addHashTags(i.getId());
-
+        logService.addLog("POST /home, Added image with id = " + i.getId(), account);
         return "redirect:/home";
     }
 
     @RequestMapping(value = "/home/{id}", method = RequestMethod.DELETE)
-    public String deleteImage(@PathVariable Long id) {
+    public String deleteImage(Authentication a, @PathVariable Long id) {
         Image i = irepo.findOne(id);
-        Account acc = arepo.findOne(i.getAccount().getId());
-        acc.getImages().remove(i);
-        arepo.save(acc);
+        Account account = arepo.findOne(i.getAccount().getId());
+        account.getImages().remove(i);
+        arepo.save(account);
         irepo.delete(id);
+        
+         logService.addLog("DELETE /home, Deleted image with id = " + i.getId(), account);
         return "redirect:/home";
     }
 
-    @RequestMapping(value = "/home/delete/{id}", method = RequestMethod.DELETE)
-    public String deleteAccount(@PathVariable Long id) {
-        arepo.delete(id);
-        return "redirect:/home";
-    }
+
+
+
+
+
 
 }
