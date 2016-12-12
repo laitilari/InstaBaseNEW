@@ -5,4 +5,4 @@ deploy:
   provider: heroku
   api_key:
     secure: 79bdad8c-fe69-49c8-92e3-da9653943658
-app: instabase
+app: https://git.heroku.com/instabase.git
