@@ -4,6 +4,7 @@ import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import javax.validation.Valid;
+import org.apache.commons.logging.LogSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import wad.domain.Account;
 import wad.domain.Log;
 import wad.repository.AccountRepository;
 import wad.repository.LogRepository;
+import wad.service.LogService;
 
 @Controller
 public class RegisterController {
@@ -23,6 +25,8 @@ public class RegisterController {
     AccountRepository accountRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private LogService logService;
 
     
     
@@ -55,8 +59,12 @@ public class RegisterController {
         }
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAuthorities(Arrays.asList("USER"));
-        accountRepo.save(account);
-
+        account = accountRepo.save(account);
+        if(account.getId() == null){
+            System.out.println("error!");
+            return "redirect:/";
+        }
+        logService.addLog("New account was created with name = " + account.getUsername(), account);
 
         return "redirect:/";
     }

@@ -29,14 +29,13 @@ public class HashTagController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String hashTagPageDefault(Authentication a, Model model, @PathVariable Long id) {
-        
+
         HashTag ht = hashRepo.findOne(id);
 
         model.addAttribute("images", imageService.reverseImageList(ht.getImages()));
         model.addAttribute("hashtag", ht.getTag());
         Account account = accountRepository.findByUsername(a.getName());
-        logService.addLog("GET /hashtag/" + id, account);
-
+        logService.addLog("GET /hashtag/{id}, Viewed hashtag (" + ht.getTag() + ") with id = " + id, account);
         return "HashTagPage";
     }
 

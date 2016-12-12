@@ -10,6 +10,7 @@ import wad.domain.Account;
 import wad.repository.AccountRepository;
 import wad.repository.LogRepository;
 import wad.service.ImageService;
+import wad.service.LogService;
 
 @Controller
 public class UserController {
@@ -18,16 +19,17 @@ public class UserController {
     AccountRepository arepo;
     @Autowired
     private ImageService imageService;
-
+    @Autowired
+    private LogService logService;
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public String imagePageDefault(Model model, @PathVariable Long id) {
         Account account = arepo.findOne(id);
-
         model.addAttribute("images", imageService.reverseImageList(account.getImages()));
         model.addAttribute("user", account);
         model.addAttribute("userspage", account.getUsername() + "'s profile");
         model.addAttribute("users", arepo.findAll());
+        logService.addLog("GET /user/{id}, Loaded user's page with id = " + id, account);
         return "userPage";
     }
 

@@ -6,13 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import wad.repository.AccountRepository;
 import wad.repository.LogRepository;
+import wad.service.LogService;
 
 @Controller
 public class DefaultController {
 
     @Autowired
     AccountRepository accountRepo;
-
+    @Autowired
+    private LogService logService;
 
     @RequestMapping("*")
     public String Home(Authentication a) {

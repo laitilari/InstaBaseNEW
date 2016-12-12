@@ -17,6 +17,7 @@ import wad.repository.AccountRepository;
 import wad.repository.CommentRepository;
 import wad.repository.ImageRepository;
 import wad.repository.LogRepository;
+import wad.service.LogService;
 
 @Controller
 public class ImageController {
@@ -27,51 +28,60 @@ public class ImageController {
     AccountRepository aRepo;
     @Autowired
     CommentRepository commentRepo;
-
+    @Autowired
+    private LogService logService;
 
     @RequestMapping(value = "/image/{id}/content", method = RequestMethod.GET, produces = "image/png")
     @ResponseBody
     @Transactional(readOnly = true)
-    public byte[] getContent(@PathVariable Long id) {
+    public byte[] getContent(Authentication a, @PathVariable Long id) {
+        Account account = aRepo.findByUsername(a.getName());
+
+        logService.addLog("GET /image/{id}/content, Viewed image with id = " + id, account);
+
         return imageRepo.findOne(id).getContent();
+
     }
 
     @RequestMapping(value = "/image/{id}", method = RequestMethod.GET)
-    public String imagePageDefault(Model model, @PathVariable Long id) {
+    public String imagePageDefault(Authentication a, Model model, @PathVariable Long id) {
         Image image = imageRepo.getOne(id);
         model.addAttribute("kuva", image);
         model.addAttribute("numberOfLikes", image.getLikes());
         model.addAttribute("comments", image.getCommentList());
         model.addAttribute("hashtags", image.getHashTags());
         model.addAttribute("title", image.getAccount().getUsername() + "'s image");
-        System.out.println(image.getCommentList().size());
+
+        Account account = aRepo.findByUsername(a.getName());
+        logService.addLog("GET /image/{id}, Loaded image with id = " + id, account);
 
         return "imagePage";
     }
 
-    @RequestMapping(value = "/image/{imageid}/like", method = RequestMethod.POST)
-    public String imagePageAddLike(Authentication a, @PathVariable Long imageid) {
-        Account acc = aRepo.findByUsername(a.getName());
-        Image i = imageRepo.findOne(imageid);
-        i.getLikesSet().add(acc);
+    @RequestMapping(value = "/image/{id}/like", method = RequestMethod.POST)
+    public String imagePageAddLike(Authentication a, @PathVariable Long id) {
+        Account account = aRepo.findByUsername(a.getName());
+        Image i = imageRepo.findOne(id);
+        i.getLikesSet().add(account);
         imageRepo.save(i);
-
-        return "redirect:/image/" + imageid;
+        logService.addLog("GET /image/{id}, Liked an image with id = " + id, account);
+        return "redirect:/image/" + id;
     }
 
-    @RequestMapping(value = "/image/{imageid}/comment", method = RequestMethod.POST)
-    public String imagePageComment(Authentication a, @PathVariable Long imageid, @RequestParam String comment) {
+    @RequestMapping(value = "/image/{id}/comment", method = RequestMethod.POST)
+    public String imagePageComment(Authentication a, @PathVariable Long id, @RequestParam String comment) {
         Comment c = new Comment();
         c.setContent(comment);
-        Account acc = aRepo.findByUsername(a.getName());
-        c.setAccount(acc);
+        Account account = aRepo.findByUsername(a.getName());
+        c.setAccount(account);
         commentRepo.save(c);
-        acc.addComment(c);
-        aRepo.save(acc);
-        Image i = imageRepo.getOne(imageid);
+        account.addComment(c);
+        aRepo.save(account);
+        Image i = imageRepo.getOne(id);
         i.getCommentList().add(c);
         imageRepo.save(i);
-        return "redirect:/image/" + imageid;
+        logService.addLog("GET /image/{id}, Commented on image with id = " + id, account);
+        return "redirect:/image/" + id;
     }
 
 }

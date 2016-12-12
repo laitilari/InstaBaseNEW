@@ -75,7 +75,7 @@ public class HomePageController {
         arepo.save(account);
         irepo.delete(id);
         
-         logService.addLog("DELETE /home, Deleted image with id = " + i.getId(), account);
+         logService.addLog("DELETE /home/{id}, Deleted image with id = " + i.getId(), account);
         return "redirect:/home";
     }
 
