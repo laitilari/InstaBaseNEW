@@ -39,4 +39,11 @@ public class Log extends AbstractPersistable<Long> {
         this.account = account;
     }
 
+    @Override
+    public String toString() {
+        return log + account.getUsername();
+    }
+    
+    
+
 }
