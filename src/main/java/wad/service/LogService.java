@@ -16,10 +16,6 @@ import wad.domain.Account;
 import wad.domain.Log;
 import wad.repository.LogRepository;
 
-/**
- *
- * @author ottomaki
- */
 @Service
 public class LogService {
 
