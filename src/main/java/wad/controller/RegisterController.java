@@ -23,9 +23,9 @@ public class RegisterController {
     AccountRepository accountRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private LogRepository logRepository;
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+
+    
+    
      
     @ModelAttribute
     private Account getAccount() {
@@ -56,8 +56,8 @@ public class RegisterController {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAuthorities(Arrays.asList("USER"));
         accountRepo.save(account);
-//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-//        Log log = new Log("");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Log log = new Log("");
 //        logRepository.
 
         return "redirect:/";
