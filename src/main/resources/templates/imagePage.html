@@ -5,7 +5,7 @@
 
     </head>
     <body>
-        
+
         <h1  th:text="${title}"></h1>
         <a href="/home">Home</a> 
         <a th:href="@{/user/{id}/(id=${kuva.account.id})}"> <span th:text="${kuva.account.username}"></span>'s profile </a> 
@@ -16,7 +16,7 @@
         <strong th:each="hashtag : ${hashtags}">
             <a th:href="@{/hashtag/{id}/(id=${hashtag.id})}" th:text="${hashtag.tag}"> </a>
         </strong>
-       
+
         <form th:action="@{/image/{id}/like(id=${kuva.id})}" th:method="POST">
             <input type="submit" value="Like"/>
         </form>
@@ -26,7 +26,7 @@
             Write a comment:<br/>
             <form th:action="@{/image/{id}/comment(id=${kuva.id})}" method="POST">
                 <input type="text" name="comment"/><br/>
-                <input type="submit" value="Send"/>           
+                <input type="submit" value="Sign In"/>           
             </form>
         </div>
         <ol>
