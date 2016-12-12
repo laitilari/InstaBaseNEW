@@ -1,9 +1,6 @@
 package wad.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -17,6 +14,7 @@ import wad.domain.Account;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.ImageRepository;
+import wad.repository.LogRepository;
 import wad.service.HashTagService;
 import wad.service.ImageService;
 
@@ -31,6 +29,7 @@ public class HomePageController {
     private HashTagService hashTagService;
     @Autowired
     private ImageService imageService;
+
 
     @RequestMapping("/home")
     public String ProfileDefault(Authentication a, Model model) {

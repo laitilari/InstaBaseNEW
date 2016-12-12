@@ -13,7 +13,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * @author ottomaki
  */
 @Entity
-public class Log extends AbstractPersistable<Long>{
+public class Log extends AbstractPersistable<Long> {
+
     private String log;
     private Account account;
 
@@ -37,6 +38,5 @@ public class Log extends AbstractPersistable<Long>{
     public void setAccount(Account account) {
         this.account = account;
     }
-    
-    
+
 }

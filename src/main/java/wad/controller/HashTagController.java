@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import wad.domain.HashTag;
 import wad.repository.HashTagRepository;
+import wad.repository.LogRepository;
 import wad.service.ImageService;
 
 @Controller
@@ -23,7 +24,7 @@ public class HashTagController {
     public String hashTagPageDefault(Model model, @PathVariable Long id) {
 
         HashTag ht = hashRepo.findOne(id);
-        
+
         model.addAttribute("images", imageService.reverseImageList(ht.getImages()));
         model.addAttribute("hashtag", ht.getTag());
 

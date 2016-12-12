@@ -15,8 +15,8 @@ import wad.domain.Comment;
 import wad.domain.Image;
 import wad.repository.AccountRepository;
 import wad.repository.CommentRepository;
-import wad.repository.HashTagRepository;
 import wad.repository.ImageRepository;
+import wad.repository.LogRepository;
 
 @Controller
 public class ImageController {
@@ -27,6 +27,7 @@ public class ImageController {
     AccountRepository aRepo;
     @Autowired
     CommentRepository commentRepo;
+
 
     @RequestMapping(value = "/image/{id}/content", method = RequestMethod.GET, produces = "image/png")
     @ResponseBody

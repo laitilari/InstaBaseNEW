@@ -56,9 +56,7 @@ public class RegisterController {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAuthorities(Arrays.asList("USER"));
         accountRepo.save(account);
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        Log log = new Log("");
-//        logRepository.
+
 
         return "redirect:/";
     }
