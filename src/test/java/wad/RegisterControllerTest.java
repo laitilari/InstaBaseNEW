@@ -48,6 +48,7 @@ public class RegisterControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
     }
 
+    // DataIntegrityViolationException ???
     @Test
     public void registeringWorks() throws Exception {
         // Lisää 
