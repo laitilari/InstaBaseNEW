@@ -5,14 +5,27 @@
  */
 package wad.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import wad.repository.LogRepository;
+import wad.service.LogService;
 
 /**
  *
  * @author ottomaki
  */
 @Controller
+@RequestMapping("/logs")
 public class LogController {
+    @Autowired
+    private LogService logService;
     
-    
+    @RequestMapping()
+    public String Logs(Model model) {
+        model.addAttribute("logs", logService.getLogs());
+        
+        return "LogPage";
+    }
 }

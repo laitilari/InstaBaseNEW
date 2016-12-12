@@ -6,6 +6,8 @@
 package wad.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -16,7 +18,11 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Log extends AbstractPersistable<Long> {
 
     private String log;
+    @ManyToOne
     private Account account;
+
+    public Log() {
+    }
 
     public Log(String log, Account account) {
         this.log = log;
@@ -39,10 +45,7 @@ public class Log extends AbstractPersistable<Long> {
         this.account = account;
     }
 
-    @Override
-    public String toString() {
-        return log + account.getUsername();
-    }
+  
     
     
 
