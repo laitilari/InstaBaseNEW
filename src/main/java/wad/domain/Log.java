@@ -13,6 +13,9 @@ public class Log extends AbstractPersistable<Long> {
     @ManyToOne
     private Account account;
 
+    public Log() {
+    }
+
     public Log(String log, Account account) {
         this.log = log;
         this.account = account;
