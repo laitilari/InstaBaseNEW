@@ -18,12 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService {
  
     @Autowired
     private AccountRepository accountRepository;
-// 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
-// 
-//    
-// 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByUsername(username);

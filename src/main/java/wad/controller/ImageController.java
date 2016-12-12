@@ -36,9 +36,6 @@ public class ImageController {
     @Transactional(readOnly = true)
     public byte[] getContent(Authentication a, @PathVariable Long id) {
         Account account = aRepo.findByUsername(a.getName());
-
-        logService.addLog("GET /image/{id}/content, Viewed image with id = " + id, account);
-
         return imageRepo.findOne(id).getContent();
 
     }
@@ -64,7 +61,7 @@ public class ImageController {
         Image i = imageRepo.findOne(id);
         i.getLikesSet().add(account);
         imageRepo.save(i);
-        logService.addLog("GET /image/{id}, Liked an image with id = " + id, account);
+        logService.addLog("POST /image/{id}, Liked an image with id = " + id, account);
         return "redirect:/image/" + id;
     }
 
@@ -80,7 +77,7 @@ public class ImageController {
         Image i = imageRepo.getOne(id);
         i.getCommentList().add(c);
         imageRepo.save(i);
-        logService.addLog("GET /image/{id}, Commented on image with id = " + id, account);
+        logService.addLog("POST /image/{id}, Commented on image with id = " + id, account);
         return "redirect:/image/" + id;
     }
 
