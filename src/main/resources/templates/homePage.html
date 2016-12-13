@@ -2,10 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Own page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     </head>
-    <body>
+    <body class = "container">
         <div th:if="${account.finnish}">
-            <h1> Profiili sivusi:</h1>
+            <h1> Profiilisivusi:</h1>
             <a href="/logout"> Kirjaudu ulos</a>           
         </div>
         <div th:unless="${account.finnish}">
@@ -44,7 +48,7 @@
                 <input type="text" name="caption" id="caption" size = "55"/>
             </form>
         </div>
-        <ol>
+        <ol class="list-unstyled">
             <li th:each="kuva : ${kuvat}">
                 <a th:href="@{/image/{id}(id=${kuva.id})}">
                     <img th:src="@{/image/{id}/content(id=${kuva.id})}"></img><br/>
@@ -60,7 +64,13 @@
                 </form><br/>
             </li>
         </ol>
-        <ol>
+        <div th:if="${account.finnish}">
+            <h3> Instabasen käyttäjät:</h3>       
+        </div>
+        <div th:unless="${account.finnish}">
+            <h3> Instabase users:</h3>       
+        </div>
+        <ol class="list-unstyled">
             <li th:each="user : ${users}">
                 <a th:href="@{/user/{id}(id=${user.id})}" th:text="${user.username}"> name </a>
             </li>

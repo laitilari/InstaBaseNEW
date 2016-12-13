@@ -2,9 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Image page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
     </head>
-    <body>
+    <body class = "container">
 
         <h1  th:text="${title}"></h1>
 
@@ -40,8 +44,8 @@
             </form>
 
         </div>
-        <ol>
-            <li th:each="comment : ${comments}">
+        <ol class="list-style">
+            <li th:each="comment : ${comments}" >
 
                 <span th:text="${comment.content}">name</span>
                 <br/>
