@@ -64,6 +64,7 @@ public class RegisterControllerTest {
         String content = res.getResponse().getContentAsString();
         
 //        Yritys tarkastaa että sivu sisältää tekstin "Your home page"
+
 //        FileWriter fWriter = new FileWriter("testResultsFile.txt");
 //        fWriter.write(content);
 //        fWriter.close();
@@ -71,6 +72,8 @@ public class RegisterControllerTest {
         
         assertTrue(accountRepository.findByUsername("tester") != null);
     }
+    
+    // Toimimaton testi
     
 //    @Test
 //    public void registeringWithBadUsernameDoesNotWork() throws Exception {
