@@ -6,10 +6,10 @@
 package wad.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import wad.repository.LogRepository;
 import wad.service.LogService;
 
 /**
@@ -19,13 +19,17 @@ import wad.service.LogService;
 @Controller
 @RequestMapping("/logs")
 public class LogController {
+
     @Autowired
     private LogService logService;
-    
+
     @RequestMapping()
-    public String Logs(Model model) {
-        model.addAttribute("logs", logService.getLogs());
-        
-        return "LogPage";
+    public String Logs(Authentication a, Model model) {
+        System.out.println(a.getAuthorities());
+        if (a.getAuthorities().contains("ADMIN")) {
+            model.addAttribute("logs", logService.getLogs());
+            return "LogPage";
+        }
+        return "redirect:/";
     }
 }
