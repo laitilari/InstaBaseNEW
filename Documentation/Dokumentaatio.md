@@ -1,32 +1,29 @@
 ## Sovelluksen kuvaus:
 
 Instabase on sovellus kuvien lisäämiseen ja toisten käyttäjien kuvien selaamiseen, kommentointiin ja tykkäämiseen.
-// Tähän lisää
+
 
 
 ## Toteutetut käyttötapaukset:
 
--rekisteröidy
--kirjaudu sisään
--kirjaudu ulos
--lisää kuva
--poista kuva
--kommentoi kuvaa
--poista kommentti
--lisää tykkäys
--poista tykkäys
--seuraa toista käyttäjää
--peru käyttäjän seuraus
--selaa kaikkien käyttäjien kuvia
--selaa seurattujen käyttäjien kuvia
--poista käyttäjätili
+- rekisteröidy
+- kirjaudu sisään
+- kirjaudu ulos
+- lisää kuva
+- poista kuva
+- kommentoi kuvaa
+- poista kommentti
+- lisää tykkäys
+- poista tykkäys
+- selaa kaikkien käyttäjien kuvia
+- selaa kuvia hastagin avulla
+- vaihda kieltä (suomi/englanti)
 
--hashtag?
+Tarkemmat kuvaukset keskeisimmistä käyttötapauksista:
 
 Käyttötapaus: Rekisteröidy
 Käyttäjä: User
 Tavoite: Uuden käyttäjätunnuksen rekisteröinti
-Esiehto: 
 Jälkiehto: Käyttäjätunnus rekisteröidään järjestelmään ja siihen liitetään salasana
 Käyttötapauksen kulku:
   1. Käyttäjä aloittaa rekisteröitymisen
@@ -65,7 +62,7 @@ Käyttötapauksen kulku:
   5. Järjestelmä vastaanottaa kuvan onnistuneesti
   6. Järjestelmä lisää kuvan käyttäjän kuvakokoelmaan
 Poikkeuksellinen toiminta:
-  5a. 
+  5a. Kuvan täytyy olla jpg- tai png-formaattia
   
 Käyttötapaus: Tykkää kuvasta
 Käyttäjä: User
@@ -92,7 +89,10 @@ Käyttötapauksen kulku:
   4. Järjestelmä vastaanottaa kommentin onnistuneesti
   5. Järjestelmä lisää kommentin kyseisen kuvan kommentteihin
 Poikkeuksellinen toiminta:
-  ???
+  4a. Kommentti ei voi olla 0 merkkiä pitkä
+
+
   
 ## Kuvaus toteuttamatta jääneistä ominaisuuksista:
-ADMIN-oikeuksien antoa ja käyttöä ei totetutettu.
+- Toisten käyttäjien seuraaminen
+- Ulkoasussa parantamisen varaa
