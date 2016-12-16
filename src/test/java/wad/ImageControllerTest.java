@@ -2,6 +2,7 @@ package wad;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,6 +13,14 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.security.authentication.RememberMeAuthenticationToken;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -23,6 +32,7 @@ import wad.repository.AccountRepository;
 import wad.repository.ImageRepository;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -38,9 +48,12 @@ public class ImageControllerTest {
 
     private MockMvc mockMvc;
     private RegisterController imageController;
-    
+
     private Account testAccount;
     private Image testImage;
+
+    String usernameInt;
+    String passwordInt;
 
     public ImageControllerTest() {
     }
@@ -52,28 +65,61 @@ public class ImageControllerTest {
 
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
 
-        testAccount = new Account();
-        testAccount.setUsername("tester");
-        testAccount.setPassword("tester");
-        ArrayList<String> testUserAuthorities = new ArrayList();
-        testUserAuthorities.add("USER");
-        testAccount.setAuthorities(testUserAuthorities);
-        accountRepository.save(testAccount);
-
+        Random rnd = new Random();
+        usernameInt = Integer.toString(100000 + rnd.nextInt(900000));
+        passwordInt = Integer.toString(100000 + rnd.nextInt(900000));
+//
+//        testAccount = new Account();
+//        testAccount.setUsername("tester" + usernameInt);
+//        testAccount.setPassword("tester" + passwordInt);
+//        ArrayList<String> testUserAuthorities = new ArrayList();
+//        testUserAuthorities.add("USER");
+//        testAccount.setAuthorities(testUserAuthorities);
+//        
+//
         byte[] testContent = new byte[10000];
         new Random().nextBytes(testContent);
         testImage = new Image();
         testImage.setContent(testContent);
         testImage.setCaption("testCaption");
         testImage.setAccount(testAccount);
-        imageRepository.save(testImage);
+//        
+//        ArrayList<Image> testAccountImages = new ArrayList<>();
+//        testAccountImages.add(testImage);
+//        testAccount.setImages(testAccountImages);
+//        
+//        imageRepository.save(testImage);
+//        accountRepository.save(testAccount);
+
     }
 
+    
     // Kesken
+    // Tee niin että postaat kuvankin
     @Test
     public void likingImageWorks() throws Exception {
-//        String id = testImage.getId().toString();
-//        mockMvc.perform(get("/image/" + id + "/content"));
+        mockMvc.perform(get("/register/")
+                .param("username", "tester" + usernameInt)
+                .param("password", "tester" + passwordInt));
+        mockMvc.perform(get("/")
+                .param("username", "tester" + usernameInt)
+                .param("password", "tester" + passwordInt));
+        MockMultipartFile newImage = new MockMultipartFile(testImage.getCaption(), testImage.getContent());
+        mockMvc.perform(post("/home/")
+                .param("kuva", newImage.getName()));    //Väärin
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        assertTrue(accountRepository.findByUsername(username).getImages().contains(testImage));
+        
+//        Date currentDate = new Date();
+        //        PersistentRememberMeToken token = new PersistentRememberMeToken("testuser", "testseries", "atoken", currentDate);
+        //        TestingAuthenticationToken auth 
+        //                = new TestingAuthenticationToken("tester" + usernameInt,
+        //                "tester" + usernameInt);
+        String id = testImage.getId().toString();
+        mockMvc.perform(get("/image/" + id))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("kuva"));
         assertEquals("a", "a");
     }
 
