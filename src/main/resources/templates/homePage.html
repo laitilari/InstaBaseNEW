@@ -31,7 +31,7 @@
         <div th:if="${account.finnish}">
             <form method="POST" action="/home" enctype="multipart/form-data">
                 <input type="file" name="file" id="file"/>
-                <input type="submit" value="Lisää PNG-kuva"/>            
+                <input type="submit" value="Lisää kuva (PNG/JPG)"/>            
                 <br/>
                 Kuvateksti:
                 <br/>
@@ -41,7 +41,7 @@
         <div th:unless="${account.finnish}">
             <form method="POST" action="/home" enctype="multipart/form-data">
                 <input type="file" name="file" id="file"/>
-                <input type="submit" value="Add image(PNG/JPG)"/>            
+                <input type="submit" value="Add image (PNG/JPG)"/>            
                 <br/>
                 Image caption:
                 <br/>
