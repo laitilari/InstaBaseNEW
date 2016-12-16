@@ -93,10 +93,14 @@ public class ImageControllerTest {
 
     }
 
-    
+    @Test
+    public void tyhjaTest() {
+
+    }
+
     // Kesken
     // Tee niin että postaat kuvankin
-    @Test
+//    @Test
     public void likingImageWorks() throws Exception {
         mockMvc.perform(get("/register/")
                 .param("username", "tester" + usernameInt)
@@ -110,7 +114,7 @@ public class ImageControllerTest {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         assertTrue(accountRepository.findByUsername(username).getImages().contains(testImage));
-        
+
 //        Date currentDate = new Date();
         //        PersistentRememberMeToken token = new PersistentRememberMeToken("testuser", "testseries", "atoken", currentDate);
         //        TestingAuthenticationToken auth 

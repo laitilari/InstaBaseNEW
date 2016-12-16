@@ -25,8 +25,7 @@ public class LogController {
 
     @RequestMapping()
     public String Logs(Authentication a, Model model) {
-        System.out.println(a.getAuthorities());
-        if (a.getAuthorities().contains("ADMIN")) {
+        if (a.getAuthorities().size() == 2) {
             model.addAttribute("logs", logService.getLogs());
             return "LogPage";
         }
