@@ -1,4 +1,4 @@
-package wad;
+package wad.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;

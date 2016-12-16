@@ -1,4 +1,4 @@
-package wad;
+package wad.controller;
 
 import java.util.Random;
 import org.junit.After;
@@ -10,6 +10,8 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -47,14 +49,22 @@ public class HomePageControllerTest {
 
     @Test
     public void statusOk() throws Exception {
+        // Register
         mockMvc.perform(get("/register/")
                 .param("username", "tester" + usernameInt)
                 .param("password", "tester" + passwordInt));
+        // Login
         mockMvc.perform(get("/")
                 .param("username", "tester" + usernameInt)
                 .param("password", "tester" + passwordInt));
-        mockMvc.perform(get("/home/"))
-                .andExpect(status().isOk());
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        //Go to homepage
+        mockMvc.perform(get("/home/")
+                .param("account", username))
+                .andExpect(status().isFound());
 
     }
 }
