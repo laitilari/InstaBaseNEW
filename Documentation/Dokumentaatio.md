@@ -1,10 +1,10 @@
-#### Sovelluksen kuvaus:
+## Sovelluksen kuvaus:
 
 Instabase on sovellus kuvien lisäämiseen ja toisten käyttäjien kuvien selaamiseen, kommentointiin ja tykkäämiseen.
 // Tähän lisää
 
 
-#### Toteutetut käyttötapaukset:
+## Toteutetut käyttötapaukset:
 
 -rekisteröidy
 -kirjaudu sisään
@@ -94,5 +94,5 @@ Käyttötapauksen kulku:
 Poikkeuksellinen toiminta:
   ???
   
-#### Kuvaus toteuttamatta jääneistä ominaisuuksista:
+## Kuvaus toteuttamatta jääneistä ominaisuuksista:
 ADMIN-oikeuksien antoa ja käyttöä ei totetutettu.
