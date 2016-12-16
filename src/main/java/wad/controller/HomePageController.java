@@ -52,7 +52,7 @@ public class HomePageController {
 
     @RequestMapping(value = "/home", method = RequestMethod.POST)
     public String addImage(Authentication a, @RequestParam("file") MultipartFile file, @RequestParam String caption) throws IOException {
-        if (!file.getContentType().equals("image/png")) {
+        if (!file.getContentType().equals("image/png") && !file.getContentType().equals("image/jpeg")) {
             return "redirect:/home";
         }
         Image i = new Image();
