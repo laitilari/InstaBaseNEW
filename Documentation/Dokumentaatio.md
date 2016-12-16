@@ -21,7 +21,7 @@ Instabase on sovellus kuvien lisäämiseen ja toisten käyttäjien kuvien selaam
 
 Tarkemmat kuvaukset keskeisimmistä käyttötapauksista:
 
-Käyttötapaus: Rekisteröidy
+Käyttötapaus: Rekisteröidy__
 Käyttäjä: User
 Tavoite: Uuden käyttäjätunnuksen rekisteröinti
 Jälkiehto: Käyttäjätunnus rekisteröidään järjestelmään ja siihen liitetään salasana
