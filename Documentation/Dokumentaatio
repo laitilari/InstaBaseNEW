@@ -1,9 +1,10 @@
-Sovelluksen kuvaus:
+####Sovelluksen kuvaus:
 
 Instabase on sovellus kuvien lisäämiseen ja toisten käyttäjien kuvien selaamiseen, kommentointiin ja tykkäämiseen.
+// Tähän lisää
 
 
-Toteutetut käyttötapaukset:
+####Toteutetut käyttötapaukset:
 
 -rekisteröidy
 -kirjaudu sisään
@@ -34,8 +35,8 @@ Käyttötapauksen kulku:
   4. Järjestelmä tarkastaa, että käyttäjätunnus on vapaa
   5. Järjestelmä ilmoittaa käyttäjälle rekisteröitymisen onnistumisesta
 Poikkeuksellinen toiminta:
-  2a. Käyttäjätunnuksen tulee olla x-x merkkiä pitkä
-  3a. Salasanan tulee olla x-x merkkiä pitkä
+  2a. Käyttäjätunnuksen tulee olla 3-15 merkkiä pitkä
+  3a. Salasanan tulee olla vähintään 5 merkkiä pitkä
   4a. Järjestelmä ei voi hyväksyä varattua käyttäjätunnusta
 
 Käyttötapaus: Kirjaudu sisään
@@ -79,7 +80,7 @@ Käyttötapauksen kulku:
 Poikkeuksellinen toiminta:
   4a. Yksi käyttäjä voi lisätä vain yhden tykkäyksen per kuva
   
-Käyttötapaus: Kommentoi kuvasta
+Käyttötapaus: Kommentoi kuvaa
 Käyttäjä: User
 Tavoite: Kommentin lisääminen kuvaan
 Esiehto: Käyttäjä on kirjautunut sisään
@@ -93,6 +94,5 @@ Käyttötapauksen kulku:
 Poikkeuksellinen toiminta:
   ???
   
-Kuvaus toteuttamatta jääneistä ominaisuuksista:
-
-
+####Kuvaus toteuttamatta jääneistä ominaisuuksista:
+ADMIN-oikeuksien antoa ja käyttöä ei totetutettu.
