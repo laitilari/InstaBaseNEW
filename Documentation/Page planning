@@ -1,10 +1,10 @@
-Login page:
+### Login page:
 -login
 -sign up
 -search for a user
 -(liked/newest images?)
 
-Own page:
+### Own page:
 -name
 -own images
 -delete image
@@ -14,7 +14,7 @@ Own page:
 -followers (names/amount)
 -link to most liked/newest images
 
-User page:
+### User page:
 -name
 -amount of followers
 -images
@@ -22,7 +22,7 @@ User page:
 -link to own page
 -link to most liked/newest images
 
-Image page:
+### Image page:
 -image
 -link to user
 -comments
@@ -32,10 +32,17 @@ Image page:
 -link to own page
 -link to most liked/newest images
 
-Most liked/newest images:
+### Most liked/newest images:
 -images
 -link to own page
 
-
+### Hashtag-sivu:
+- Hashtagi
+- linkki kotisivulle
+Listattuna jokaiselle kuvalle:
+- kuva itse
+- hashtagi
+- tykkäyksien määrä
+- kommenttien määrä, linkki kommentteihin
 
 
