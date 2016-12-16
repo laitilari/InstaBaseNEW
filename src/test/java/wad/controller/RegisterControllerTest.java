@@ -1,9 +1,10 @@
-package wad;
+package wad.controller;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -48,29 +49,24 @@ public class RegisterControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
     }
 
-    // DataIntegrityViolationException ???
-//    @Test
+    @Test
     public void registeringWorks() throws Exception {
-        // Lisää 
-        accountRepository.deleteAll();
+        
+        Random rnd = new Random();
+        String usernameInt = Integer.toString(100000 + rnd.nextInt(900000));
+        String passwordInt = Integer.toString(100000 + rnd.nextInt(900000));
+        
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("text/html;charset=UTF-8"));
         MvcResult res = mockMvc.perform(post("/register/createuser")
-                .param("username", "tester")
-                .param("password", "tester"))
+                .param("username", "tester" + usernameInt)
+                .param("password", "tester" + passwordInt))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
         String content = res.getResponse().getContentAsString();
         
-//        Yritys tarkastaa että sivu sisältää tekstin "Your home page"
-
-//        FileWriter fWriter = new FileWriter("testResultsFile.txt");
-//        fWriter.write(content);
-//        fWriter.close();
-//        assertTrue(content.contains("Your home page"));
-        
-        assertTrue(accountRepository.findByUsername("tester") != null);
+        assertTrue(accountRepository.findByUsername("tester" + usernameInt) != null);
     }
     
     // Toimimaton testi
